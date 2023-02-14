@@ -38,6 +38,8 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.login);
         setTitle("Login");
         getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azulInterfaz));
+
+
         usuario_login = findViewById(R.id.usuario_login);
         contraseña_login = findViewById(R.id.contraseña_login);
         btn_login = findViewById(R.id.btn_login);
@@ -53,7 +55,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!usuario_login.getText().toString().isEmpty() && !contraseña_login.getText().toString().isEmpty()){
-                    System.out.println(usuario_login.getText().toString() + contraseña_login.getText().toString());
+                    Log.d(TAG, "usuario: "+usuario_login.getText().toString() + "contraseña: "+ contraseña_login.getText().toString());
                     FirebaseAuth.getInstance()
                             .signInWithEmailAndPassword(usuario_login.getText().toString(), contraseña_login.getText().toString())
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
