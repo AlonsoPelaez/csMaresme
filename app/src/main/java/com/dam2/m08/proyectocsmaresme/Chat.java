@@ -35,7 +35,7 @@ public class Chat extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.configuration:
-                intent = new Intent(Chat.this, Configuration.class);
+                intent = new Intent(Chat.this, Setting.class);
                 startActivity(intent);
                 break;
         }
