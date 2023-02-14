@@ -50,11 +50,6 @@ public class Register extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (!task.isSuccessful()){
                                         showError(task.getException().getMessage());
-                                        Log.d(TAG, "task---: " +task.getException().getMessage());
-                                        Log.d(TAG, "task---: " +task.getException().getLocalizedMessage());
-                                        Log.d(TAG, "task---: " +task.getException().getCause());
-                                        Log.d(TAG, "task---: " +task.getException().getSuppressed());
-                                        Log.d(TAG, "task---: " +task.getException().getStackTrace());
                                     }
                                     else {
                                         Intent intent = new Intent(Register.this, Login.class);
