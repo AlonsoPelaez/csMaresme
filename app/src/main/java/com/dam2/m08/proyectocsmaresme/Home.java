@@ -4,15 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.firebase.auth.FirebaseAuth;
-
-import java.io.IOException;
 
 public class Home extends AppCompatActivity {
     @Override
@@ -32,7 +26,7 @@ public class Home extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         getMenuInflater();
-        Intent intent = getIntent();
+        Intent intent;
         switch (item.getItemId()){
             case R.id.games:
                 intent = new Intent(Home.this, Games.class);
