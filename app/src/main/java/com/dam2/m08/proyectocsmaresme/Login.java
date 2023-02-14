@@ -2,6 +2,7 @@ package com.dam2.m08.proyectocsmaresme;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,7 +37,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         setTitle("Login");
-
+        getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azulInterfaz));
         usuario_login = findViewById(R.id.usuario_login);
         contraseña_login = findViewById(R.id.contraseña_login);
         btn_login = findViewById(R.id.btn_login);
@@ -51,19 +53,14 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!usuario_login.getText().toString().isEmpty() && !contraseña_login.getText().toString().isEmpty()){
+                    System.out.println(usuario_login.getText().toString() + contraseña_login.getText().toString());
                     FirebaseAuth.getInstance()
                             .signInWithEmailAndPassword(usuario_login.getText().toString(), contraseña_login.getText().toString())
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (!task.isSuccessful()){
-                                        showError(task.getException().getMessage());
-                                        Log.d(TAG, "task---: " +task.getException().getMessage());
-                                    }
-                                    else {
                                         Intent intent = new Intent(Login.this, Home.class);
                                         startActivity(intent);
-                                    }
                                 }
                             });
                 }

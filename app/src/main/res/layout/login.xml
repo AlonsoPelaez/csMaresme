@@ -3,54 +3,76 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#9EC9FC">
 
-
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="233dp"
-        android:layout_height="62dp"
-        android:layout_marginBottom="32dp"
-        android:text="Inicia Sesion"
-        app:layout_constraintBottom_toTopOf="@+id/enlaceRegistro"
-        app:layout_constraintEnd_toEndOf="@+id/contraseña_login"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="@+id/contraseña_login" />
 
     <EditText
         android:id="@+id/usuario_login"
-        android:layout_width="349dp"
-        android:layout_height="63dp"
+        android:layout_width="348dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="76dp"
-        android:hint="enter a user"
-        app:layout_constraintBottom_toTopOf="@+id/contraseña_login"
+        android:background="@drawable/botonredondo"
+        android:hint="Tarjeta Sanitaria Individual (TSI)"
+        android:textColorHighlight="#000000"
+        android:textColorLink="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.462" />
 
     <EditText
         android:id="@+id/contraseña_login"
-        android:layout_width="330dp"
-        android:layout_height="59dp"
-        android:layout_marginBottom="80dp"
+        android:layout_width="348dp"
+        android:layout_height="48dp"
+        android:background="@drawable/botonredondo"
         android:ems="10"
-        android:hint="enter a password"
+        android:hint="Contraseña"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btn_login"
+        android:textColorHighlight="#000000"
+        android:textColorLink="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/usuario_login"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/usuario_login" />
+        app:layout_constraintStart_toStartOf="@+id/usuario_login"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.512" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="191dp"
+        android:layout_height="34dp"
+        android:background="@drawable/botonredondo"
+        android:text="Inicia Sesion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/contraseña_login"
+        app:layout_constraintHorizontal_bias="0.598"
+        app:layout_constraintStart_toStartOf="@+id/contraseña_login"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.609" />
 
     <TextView
         android:id="@+id/enlaceRegistro"
-        android:layout_width="226dp"
-        android:layout_height="23dp"
-        android:layout_marginBottom="136dp"
+        android:layout_width="225dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="220dp"
+        android:background="@drawable/botonredondo"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btn_login"
-        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="@+id/btn_login" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="329dp"
+        android:layout_height="130dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096"
+        app:srcCompat="@drawable/microsoftteams_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
