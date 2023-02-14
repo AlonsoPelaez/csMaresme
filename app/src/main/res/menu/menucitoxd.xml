@@ -14,7 +14,7 @@
         android:id="@+id/Chat"
         android:enabled="true"
         android:icon="@drawable/chat"
-        android:title="Games"/>
+        android:title="Chat"/>
     <item
         android:id="@+id/configuration"
         android:enabled="true"
