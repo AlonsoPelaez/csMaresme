@@ -49,8 +49,8 @@
 
     <Button
         android:id="@+id/btn_register"
-        android:layout_width="195dp"
-        android:layout_height="38dp"
+        android:layout_width="191dp"
+        android:layout_height="34dp"
         android:background="@drawable/botonredondo"
         android:text="Registrate"
         app:layout_constraintBottom_toBottomOf="parent"
