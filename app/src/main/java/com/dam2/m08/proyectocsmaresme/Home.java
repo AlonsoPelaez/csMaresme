@@ -21,9 +21,17 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.home);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        getMenuInflater();
         Intent intent = getIntent();
         switch (item.getItemId()){
             case R.id.games:
