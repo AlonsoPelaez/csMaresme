@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -24,8 +23,7 @@ public class Register extends AppCompatActivity {
     private EditText usuario_register;
     private EditText contraseña_register;
     private Button btn_register;
-    private final String TAG = "PROYECTO_CS_MARESME___REGISTER";
-
+    private final String TAG ="PROYECTO_CS_MARESME___REGISTER";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,17 +71,15 @@ public class Register extends AppCompatActivity {
             }
         });
     }
-
-    private void showError(String mensaje) {
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+    private void showError(String mensaje){
+        AlertDialog.Builder alert= new AlertDialog.Builder(this);
         alert.setTitle("Error");
         alert.setMessage(mensaje);
         alert.setCancelable(false);
         alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(Register.this, Register.class);
-                startActivity(intent);
+
             }
         });
         alert.create().show();

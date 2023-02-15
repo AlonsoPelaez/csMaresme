@@ -1,7 +1,9 @@
 package com.dam2.m08.proyectocsmaresme;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,15 +45,18 @@ public class Login extends AppCompatActivity {
         getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azulInterfaz));
 
 
+
+        setup();
+        session();
+    }
+    private void setup(){
+
         usuario_login = findViewById(R.id.usuario_login);
         contraseña_login = findViewById(R.id.contraseña_login);
         btn_login = findViewById(R.id.btn_login);
         enlaceRegistro = findViewById(R.id.enlaceRegistro);
         enlaceRegistro.setText("¿Ya tienes una cuenta? Registrate");
         firebaseAuth = FirebaseAuth.getInstance();
-        setup();
-    }
-    private void setup(){
 
 
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -63,14 +68,15 @@ public class Login extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-                                    Intent intent = new Intent(getApplicationContext(), Home.class);
-                                    startActivity(intent);
+                                    showHome();
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(getApplicationContext(), "El usuario o contraseña no son correctos", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Ha ocurrido un error", Toast.LENGTH_SHORT).show();
+
+                                    showError(e.getMessage());
                                 }
                             });
                 }
@@ -85,6 +91,23 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+    private void session(){
+        SharedPreferences prefer= getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
+        String usuario_email = prefer.getString("usuario_email",null);
+
+        if (usuario_email != null){
+            Intent intent = new Intent(this, Home.class);
+            intent.putExtra("usuario_email",usuario_email);
+            startActivity(intent);
+        }
+    }
+
+    public void showHome(){
+        Intent intent = new Intent(this, Home.class);
+        intent.putExtra("usuario",usuario_login.getText().toString());
+        startActivity(intent);
+    }
+
     private void showError(String mensaje){
         AlertDialog.Builder alert= new AlertDialog.Builder(this);
         alert.setTitle("Error");
