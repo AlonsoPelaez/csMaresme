@@ -70,7 +70,7 @@ public class Login extends AppCompatActivity {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(getApplicationContext(), "Ha ocurrido un error", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "El usuario o contraseña no son correctos", Toast.LENGTH_SHORT).show();
                                 }
                             });
                 }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -23,7 +24,8 @@ public class Register extends AppCompatActivity {
     private EditText usuario_register;
     private EditText contraseña_register;
     private Button btn_register;
-    private final String TAG ="PROYECTO_CS_MARESME___REGISTER";
+    private final String TAG = "PROYECTO_CS_MARESME___REGISTER";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,27 +44,38 @@ public class Register extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!usuario_register.getText().toString().isEmpty() && !contraseña_register.getText().toString().isEmpty()){
-                    FirebaseAuth.getInstance()
-                            .createUserWithEmailAndPassword(usuario_register.getText().toString(), contraseña_register.getText().toString())
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (!task.isSuccessful()){
-                                        showError(task.getException().getMessage());
-                                    }
-                                    else {
-                                        Intent intent = new Intent(Register.this, Login.class);
-                                        startActivity(intent);
-                                    }
-                                }
-                            });
+                if (!usuario_register.getText().toString().isEmpty() && !contraseña_register.getText().toString().isEmpty()) {
+                    if (usuario_register.getText().toString().contains("@")) {
+                        if (contraseña_register.getText().toString().length()>6) {
+                            FirebaseAuth.getInstance()
+                                    .createUserWithEmailAndPassword(usuario_register.getText().toString(), contraseña_register.getText().toString())
+                                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (!task.isSuccessful()) {
+                                                showError(task.getException().getMessage());
+                                            } else {
+                                                Intent intent = new Intent(Register.this, Login.class);
+                                                startActivity(intent);
+                                            }
+                                        }
+                                    });
+                        } else {
+                            Toast.makeText(getApplicationContext(), "La contraseña debe ser minimo de 6 carecteres", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Debe ingresar un correo electronico valido", Toast.LENGTH_SHORT).show();
+                    }
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Los campos no pueden estar vacios", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-    private void showError(String mensaje){
-        AlertDialog.Builder alert= new AlertDialog.Builder(this);
+
+    private void showError(String mensaje) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("Error");
         alert.setMessage(mensaje);
         alert.setCancelable(false);
