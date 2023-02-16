@@ -37,7 +37,7 @@ public class Setting extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.chat:
-                intent = new Intent(Setting.this, Chat.class);
+                intent = new Intent(Setting.this, ChatAnonimo.class);
                 startActivity(intent);
                 break;
         }

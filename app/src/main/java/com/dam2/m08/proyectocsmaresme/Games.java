@@ -33,7 +33,7 @@ public class Games extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.chat:
-                intent = new Intent(Games.this, Chat.class);
+                intent = new Intent(Games.this, ChatAnonimo.class);
                 startActivity(intent);
                 break;
             case R.id.configuration:
