@@ -21,11 +21,11 @@ public class ChatAnonimo extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chat);
+        setContentView(R.layout.chatanonimo);
         Log.d(TAG, "onCreateOptionsMenu: ");
         Toast.makeText(this, "CHAT", Toast.LENGTH_SHORT).show();
 
-        BottomNavigationView bottomNavigationView=findViewById(R.id.navView);
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
 
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.chat);
