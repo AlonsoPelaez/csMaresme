@@ -64,6 +64,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!usuario_login.getText().toString().isEmpty() && !contraseña_login.getText().toString().isEmpty()){
+                    Log.d(TAG, "usuario: "+usuario_login.getText().toString() + "contraseña: "+ contraseña_login.getText().toString());
                     firebaseAuth.signInWithEmailAndPassword(usuario_login.getText().toString(),contraseña_login.getText().toString())
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
@@ -74,6 +75,8 @@ public class Login extends AppCompatActivity {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(getApplicationContext(), "Ha ocurrido un error", Toast.LENGTH_SHORT).show();
+
                                     showError(e.getMessage());
                                 }
                             });
