@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
@@ -22,36 +23,39 @@ public class ChatAnonimo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat);
         Log.d(TAG, "onCreateOptionsMenu: ");
+        Toast.makeText(this, "CHAT", Toast.LENGTH_SHORT).show();
+
+        BottomNavigationView bottomNavigationView=findViewById(R.id.navView);
+
+        // Set Home selected
+        bottomNavigationView.setSelectedItemId(R.id.chat);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch(item.getItemId())
+                {
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(),Home.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.games:
+                        startActivity(new Intent(getApplicationContext(),Games.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.chat:
+                        startActivity(new Intent(getApplicationContext(),ChatAnonimo.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.setting:
+                        startActivity(new Intent(getApplicationContext(),Setting.class));
+                        overridePendingTransition(0,0);
+                }
+                return false;
+            }
+        });
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
     }
-
-
-
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent intent = getIntent();
-        switch (item.getItemId()){
-            case R.id.games:
-                intent = new Intent(ChatAnonimo.this, Games.class);
-                startActivity(intent);
-                break;
-            case R.id.home:
-                intent = new Intent(ChatAnonimo.this, Home.class);
-                startActivity(intent);
-                break;
-            case R.id.configuration:
-                intent = new Intent(ChatAnonimo.this, Setting.class);
-                startActivity(intent);
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
-}
