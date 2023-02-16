@@ -46,7 +46,7 @@ public class Login extends AppCompatActivity {
 
 
 
-//        session();
+        session();
         setup();
 
     }
@@ -70,6 +70,7 @@ public class Login extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
                                     showHome();
+//                                    limpiaCampos();
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -87,27 +88,32 @@ public class Login extends AppCompatActivity {
         enlaceRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Login.this,Register.class);
+                Intent intent = new Intent(getApplicationContext(),Register.class);
                 startActivity(intent);
             }
         });
     }
-    //metodo de inicio de sesion automatico
-//    private void session(){
-//        SharedPreferences prefer= getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
-//        String usuario_email = prefer.getString("usuario_email",null);
-//        Log.d(TAG, "usuario_email: "+ usuario_email);
-//
-//        if (usuario_email != null){
-//            Intent intent = new Intent(this, Home.class);
-//            intent.putExtra("usuario_email",usuario_email);
-//            Log.d(TAG, "usuario_email: "+ usuario_email);
-//            startActivity(intent);
-//        }
+//    private void limpiaCampos(){
+//        usuario_login.setText("");
+//        contraseña_login.setText("");
 //    }
 
+    //metodo de inicio de sesion automatico
+    private void session(){
+        SharedPreferences prefer= getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
+        String usuario_email = prefer.getString("usuario_email",null);
+        Log.d(TAG, "usuario_email: "+ usuario_email);
+
+        if (usuario_email != null){
+            Intent intent = new Intent(getApplicationContext(), Home.class);
+            intent.putExtra("usuario_email",usuario_email);
+            Log.d(TAG, "usuario_email: "+ usuario_email);
+            startActivity(intent);
+        }
+    }
+
     public void showHome(){
-        Intent intent = new Intent(this, Home.class);
+        Intent intent = new Intent(getApplicationContext(), Home.class);
         intent.putExtra("usuario_email",usuario_login.getText().toString());
         startActivity(intent);
     }

@@ -53,7 +53,7 @@ public class Register extends AppCompatActivity {
                                             if (!task.isSuccessful()) {
                                                 showError(task.getException().getMessage());
                                             } else {
-                                                Intent intent = new Intent(Register.this, Login.class);
+                                                Intent intent = new Intent(getApplicationContext(), Login.class);
                                                 startActivity(intent);
                                             }
                                         }

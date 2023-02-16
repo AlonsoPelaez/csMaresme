@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.Set;
+
 public class Home extends AppCompatActivity {
 
     private final String TAG = "PROYECTO_CS_MARESME___HOME";
@@ -30,14 +32,14 @@ public class Home extends AppCompatActivity {
         Toast.makeText(this, "HOME", Toast.LENGTH_SHORT).show();
 
 //        recoge el email del usuario y lo mete en el sharedpreferences
-//        Intent intent = getIntent();
-//        String usuario_email= intent.getStringExtra("usuario_email");
-//        Log.d(TAG, "onCreate: " + usuario_email);
-//
-//        SharedPreferences prefer= getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = prefer.edit();
-//        editor.putString("usuario_email",usuario_email);
-//        editor.apply();
+        Intent intent = getIntent();
+        String usuario_email= intent.getStringExtra("usuario_email");
+        Log.d(TAG, "onCreate: " + usuario_email);
+
+        SharedPreferences prefer= getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefer.edit();
+        editor.putString("usuario_email",usuario_email);
+        editor.apply();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.navView);
 
@@ -66,6 +68,14 @@ public class Home extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.setting:
+//                        funcion de cerrado de sesion
+//                        SharedPreferences preferences = getSharedPreferences(getString(R.string.prefer_file),Context.MODE_PRIVATE);
+//                        SharedPreferences.Editor editor = preferences.edit();
+//                        editor.clear();
+//                        editor.apply();
+//
+//                        FirebaseAuth.getInstance().signOut();
+//                        startActivity(new Intent(getApplicationContext(), Login.class));
                         startActivity(new Intent(getApplicationContext(), Setting.class));
 
                 }
