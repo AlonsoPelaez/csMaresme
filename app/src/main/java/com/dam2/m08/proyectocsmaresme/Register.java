@@ -44,8 +44,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!usuario_register.getText().toString().isEmpty() && !contraseña_register.getText().toString().isEmpty()) {
-                    if (usuario_register.getText().toString().contains("@")) {
-                        if (contraseña_register.getText().toString().length()>6) {
+
                             FirebaseAuth.getInstance()
                                     .createUserWithEmailAndPassword(usuario_register.getText().toString(), contraseña_register.getText().toString())
                                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -59,16 +58,7 @@ public class Register extends AppCompatActivity {
                                             }
                                         }
                                     });
-                        } else {
-                            Toast.makeText(getApplicationContext(), "La contraseña debe ser minimo de 6 carecteres", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Debe ingresar un correo electronico valido", Toast.LENGTH_SHORT).show();
-                    }
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "Los campos no pueden estar vacios", Toast.LENGTH_SHORT).show();
-                }
+                }else showError("Los campos no pueden estar vacios. Intentalo de nuevo!");
             }
         });
     }

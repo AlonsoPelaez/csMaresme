@@ -46,8 +46,9 @@ public class Login extends AppCompatActivity {
 
 
 
+//        session();
         setup();
-        session();
+
     }
     private void setup(){
 
@@ -63,7 +64,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!usuario_login.getText().toString().isEmpty() && !contraseña_login.getText().toString().isEmpty()){
-                    Log.d(TAG, "usuario: "+usuario_login.getText().toString() + "contraseña: "+ contraseña_login.getText().toString());
                     firebaseAuth.signInWithEmailAndPassword(usuario_login.getText().toString(),contraseña_login.getText().toString())
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
@@ -74,8 +74,6 @@ public class Login extends AppCompatActivity {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(getApplicationContext(), "Ha ocurrido un error", Toast.LENGTH_SHORT).show();
-
                                     showError(e.getMessage());
                                 }
                             });
@@ -91,20 +89,23 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-    private void session(){
-        SharedPreferences prefer= getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
-        String usuario_email = prefer.getString("usuario_email",null);
-
-        if (usuario_email != null){
-            Intent intent = new Intent(this, Home.class);
-            intent.putExtra("usuario_email",usuario_email);
-            startActivity(intent);
-        }
-    }
+    //metodo de inicio de sesion automatico
+//    private void session(){
+//        SharedPreferences prefer= getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
+//        String usuario_email = prefer.getString("usuario_email",null);
+//        Log.d(TAG, "usuario_email: "+ usuario_email);
+//
+//        if (usuario_email != null){
+//            Intent intent = new Intent(this, Home.class);
+//            intent.putExtra("usuario_email",usuario_email);
+//            Log.d(TAG, "usuario_email: "+ usuario_email);
+//            startActivity(intent);
+//        }
+//    }
 
     public void showHome(){
         Intent intent = new Intent(this, Home.class);
-        intent.putExtra("usuario",usuario_login.getText().toString());
+        intent.putExtra("usuario_email",usuario_login.getText().toString());
         startActivity(intent);
     }
 
@@ -116,8 +117,6 @@ public class Login extends AppCompatActivity {
         alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(Login.this, Login.class);
-                startActivity(intent);
             }
         });
         alert.create().show();
