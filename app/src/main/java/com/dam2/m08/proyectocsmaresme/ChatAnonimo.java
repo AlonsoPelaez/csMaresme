@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
 
-public class Chat extends AppCompatActivity {
+public class ChatAnonimo extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,15 +35,15 @@ public class Chat extends AppCompatActivity {
         Intent intent = getIntent();
         switch (item.getItemId()){
             case R.id.games:
-                intent = new Intent(Chat.this, Games.class);
+                intent = new Intent(ChatAnonimo.this, Games.class);
                 startActivity(intent);
                 break;
             case R.id.home:
-                intent = new Intent(Chat.this, Home.class);
+                intent = new Intent(ChatAnonimo.this, Home.class);
                 startActivity(intent);
                 break;
             case R.id.configuration:
-                intent = new Intent(Chat.this, Setting.class);
+                intent = new Intent(ChatAnonimo.this, Setting.class);
                 startActivity(intent);
                 break;
         }
