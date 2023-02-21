@@ -70,6 +70,8 @@ public class Home extends AppCompatActivity {
                     case R.id.setting:
 
                         startActivity(new Intent(getApplicationContext(), Setting.class));
+                        overridePendingTransition(0, 0);
+                        return true;
 
                 }
                 return false;
