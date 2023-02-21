@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Setting extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class Setting extends AppCompatActivity{
     private Button btn_logout;
     private Spinner spinner_CambiarIdioma;
     private Spinner spinner_EnviarSugerencia;
@@ -29,6 +29,7 @@ public class Setting extends AppCompatActivity implements AdapterView.OnItemSele
 
     private AdapterView<Adapter> adapterIdioma;
     private AdapterView<Adapter> adapterSugerencia;
+    private final String TAG = "PROYECTO_CS_MARESME___SETTINGS";
 
 
     @Override
@@ -38,8 +39,24 @@ public class Setting extends AppCompatActivity implements AdapterView.OnItemSele
         setContentView(R.layout.setting);
         Toast.makeText(this, "SETTING", Toast.LENGTH_SHORT).show();
 
-//        spinner_CambiarIdioma.setOnItemSelectedListener(this);
-//        spinner_EnviarSugerencia.setOnItemSelectedListener(this);
+        spinner_EnviarSugerencia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(i==0){
+                    spinner_EnviarSugerencia.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            startActivity(new Intent(getApplicationContext(), Sugerencias.class));
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
 
@@ -62,20 +79,4 @@ public class Setting extends AppCompatActivity implements AdapterView.OnItemSele
 
 
     }
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-
-
-    }
-
-
-
-    public void onNothingSelected(AdapterView<?> adapterIdiomas) {
-
-
-    }
-
-
-
 }
