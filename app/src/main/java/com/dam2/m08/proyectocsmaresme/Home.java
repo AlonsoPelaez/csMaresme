@@ -68,14 +68,7 @@ public class Home extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.setting:
-//                        funcion de cerrado de sesion
-//                        SharedPreferences preferences = getSharedPreferences(getString(R.string.prefer_file),Context.MODE_PRIVATE);
-//                        SharedPreferences.Editor editor = preferences.edit();
-//                        editor.clear();
-//                        editor.apply();
-//
-//                        FirebaseAuth.getInstance().signOut();
-//                        startActivity(new Intent(getApplicationContext(), Login.class));
+
                         startActivity(new Intent(getApplicationContext(), Setting.class));
 
                 }
