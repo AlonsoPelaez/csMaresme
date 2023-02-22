@@ -22,15 +22,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Setting extends AppCompatActivity{
     private Button btn_logout;
-    private Spinner spinner_CambiarIdioma;
-    private Spinner spinner_EnviarSugerencia;
-    private Spinner spinner_ReportarProblema;
-    private Spinner spinner_Calificanos;
-    private Spinner spinner_Contactanos;
 
 
-    private AdapterView<Adapter> adapterIdioma;
-    private AdapterView<Adapter> adapterSugerencia;
+
     private final String TAG = "PROYECTO_CS_MARESME___SETTINGS";
 
     private Button sugerenciabutton;
