@@ -30,72 +30,59 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <Spinner
-        android:id="@+id/spinner_EnviarSugerencia"
-        android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="64dp"
-        android:background="#4E468E"
-        android:entries="@array/Sugerencias"
-        android:contentDescription="@string/Cambiar_idioma"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_CambiarIdioma"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <Spinner
-        android:id="@+id/spinner_ReportarProblema"
-        android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="64dp"
-        android:background="#4E468E"
-        android:entries="@array/Report"
-        android:contentDescription="@string/Cambiar_idioma"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_EnviarSugerencia"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <Spinner
-        android:id="@+id/spinner_Calificanos"
-        android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="64dp"
-        android:background="#4E468E"
-        android:entries="@array/RateUs"
-        android:contentDescription="@string/Cambiar_idioma"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_ReportarProblema"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <Spinner
-        android:id="@+id/spinner_Contactanos"
-        android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="64dp"
-        android:background="#4E468E"
-        android:entries="@array/ContactUs"
-        android:contentDescription="@string/Cambiar_idioma"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_Calificanos"
-        tools:ignore="TouchTargetSizeCheck" />
-
 
     <Button
         android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#4E468E"
         android:text="Cerrar sesion"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button_contactus"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732" />
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/button_contactus" />
+
+    <Button
+        android:id="@+id/button_sugerencia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#4E468E"
+        android:text="Enviar Sugerencia"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_CambiarIdioma"
+        app:layout_constraintStart_toStartOf="@+id/spinner_CambiarIdioma"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_CambiarIdioma"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/button_report"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#4E468E"
+        android:text="Enviar un reporte de error"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_CambiarIdioma"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/button_sugerencia"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/button_rateus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#4E468E"
+        android:text="Calíficanos"
+        app:layout_constraintEnd_toEndOf="@+id/button_report"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/button_report"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/button_contactus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#4E468E"
+        android:text="Contactanos"
+        app:layout_constraintEnd_toEndOf="@+id/button_rateus"
+        app:layout_constraintStart_toStartOf="@+id/button_rateus"
+        app:layout_constraintTop_toBottomOf="@+id/button_rateus" />
 </androidx.constraintlayout.widget.ConstraintLayout>

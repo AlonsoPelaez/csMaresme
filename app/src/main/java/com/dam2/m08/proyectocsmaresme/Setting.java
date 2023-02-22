@@ -1,5 +1,6 @@
 package com.dam2.m08.proyectocsmaresme;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,11 +28,17 @@ public class Setting extends AppCompatActivity{
     private Spinner spinner_Calificanos;
     private Spinner spinner_Contactanos;
 
+
     private AdapterView<Adapter> adapterIdioma;
     private AdapterView<Adapter> adapterSugerencia;
     private final String TAG = "PROYECTO_CS_MARESME___SETTINGS";
 
+    private Button sugerenciabutton;
+    private Button buttonreport;
+    private Button rateus;
+    private Button contactusbutton;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,24 +46,42 @@ public class Setting extends AppCompatActivity{
         setContentView(R.layout.setting);
         Toast.makeText(this, "SETTING", Toast.LENGTH_SHORT).show();
 
-        spinner_EnviarSugerencia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i==0){
-                    spinner_EnviarSugerencia.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            startActivity(new Intent(getApplicationContext(), Sugerencias.class));
-                        }
-                    });
-                }
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+        sugerenciabutton = findViewById(R.id.button_sugerencia);
+        buttonreport = findViewById(R.id.button_report);
+        rateus = findViewById(R.id.button_rateus);
+        contactusbutton = findViewById(R.id.button_contactus);
 
+        sugerenciabutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Sugerencias.class));
             }
         });
+
+
+        buttonreport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Report.class));
+            }
+        });
+
+
+
+        rateus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Calificanos.class));
+            }
+        });
+        contactusbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Contactanos.class));
+            }
+        });
+
 
 
 
