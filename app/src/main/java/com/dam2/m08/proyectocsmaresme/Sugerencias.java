@@ -11,5 +11,6 @@ public class Sugerencias extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sugerencias);
-        Toast.makeText(this, "SUGERENCIAS", Toast.LENGTH_SHORT).show();    }
+        Toast.makeText(this, "SUGERENCIAS", Toast.LENGTH_SHORT).show();
+    }
 }
