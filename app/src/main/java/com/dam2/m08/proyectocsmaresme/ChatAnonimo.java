@@ -18,8 +18,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.IOException;
 
@@ -27,17 +36,22 @@ public class ChatAnonimo extends AppCompatActivity {
     private final String TAG = "PROYECTO_CS_MARESME___CHATANONIMO";
     private RecyclerView rvComentario;
 //    private AdaptadorComentario adaptadorComentario;
+    private TextView nombreAnonimo;
+    private TextView titulo;
+    private TextView contenido;
+    private TextView fecha;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.comentarioanonimo);
-        setContentView(R.layout.chatanonimo);
+        setContentView(R.layout.comentarioanonimo);
+//        setContentView(R.layout.chatanonimo);
         Log.d(TAG, "onCreateOptionsMenu: ");
 
         Toast.makeText(this, "CHAT", Toast.LENGTH_SHORT).show();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        cargaDatos();
 //        rvComentario = findViewById(R.id.rv_comentarios);
 //
 //
@@ -77,6 +91,28 @@ public class ChatAnonimo extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void cargaDatos() {
+        nombreAnonimo = findViewById(R.id.cvNombre);
+        titulo = findViewById(R.id.cvTitulo);
+        contenido = findViewById(R.id.cvContenido);
+        fecha = findViewById(R.id.cvFecha);
+        Log.d(TAG, "cargaDatos: ");
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Comentarios").document("ncbV1D407OEmVODsZgth").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()){
+                    Log.d(TAG, "onComplete: "+ task.getResult().getData());
+                    nombreAnonimo.setText(task.getResult().getString("nombre"));
+                    titulo.setText(task.getResult().getString("titulo"));
+                    contenido.setText(task.getResult().getString("comentario"));
+//                    fecha.setText(task.getResult().getString("fecha"));
+                    fecha.setText(task.getResult().getString("fecha"));
+                }
+            }
+        });
     }
 
 //    public class AdaptadorComentario extends RecyclerView.Adapter<AdaptadorComentario.AdaptadorComentarioHolder> implements View.OnClickListener {

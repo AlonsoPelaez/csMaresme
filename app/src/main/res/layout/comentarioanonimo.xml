@@ -19,6 +19,7 @@
         app:layout_constraintVertical_bias="0.227" />
 
     <LinearLayout
+
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,18 +56,27 @@
                 <TextView
                     android:id="@+id/cvNombre"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:text="nombre anonimo generado"
-                    android:textAlignment="center" />
+                    android:layout_height="30dp"
+                    android:textSize="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"/>
+
+
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="nombre anonimo generado"-->
+
             </LinearLayout>
 
             <TextView
                 android:id="@+id/cvTitulo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Titulo"
+                android:layout_height="30dp"
+                android:textSize="20sp"
                 android:textAlignment="center" />
+
+<!--                android:text="Titulo"-->
+
 
 
         </LinearLayout>
@@ -81,17 +91,35 @@
                 android:id="@+id/cvContenido"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_margin="5dp"
-                android:text="contenido" />
+                android:layout_margin="5dp"/>
+<!--                android:text="contenido" />-->
 
             <TextView
                 android:id="@+id/cvFecha"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="30dp"
                 android:layout_margin="5dp"
-                android:text="fecha "
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="#9E9C9C" />
+
+<!--            <EditText-->
+<!--                android:id="@+id/editTextDate"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ems="10"-->
+<!--                android:inputType="date" />-->
+            <!--                android:text="fecha "-->
+
         </LinearLayout>
 
     </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:backgroundTint="#4E468E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
