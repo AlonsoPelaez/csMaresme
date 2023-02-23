@@ -35,13 +35,16 @@ public class Home extends AppCompatActivity {
 
     private final String TAG = "PROYECTO_CS_MARESME___HOME";
     private TextView titulo;
+    private TextView cuerpoNoticia;
 
+    @SuppressLint("MissingInflatedId")
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         mostrarDatos();
         Toast.makeText(this, "HOME", Toast.LENGTH_SHORT).show();
         titulo = findViewById(R.id.titulo);
+        cuerpoNoticia = findViewById(R.id.cuerpoNoticia);
         //        recoge el email del usuario y lo mete en el sharedpreferences
         Intent intent = getIntent();
         String usuario_email= intent.getStringExtra("usuario_email");
@@ -99,6 +102,7 @@ public class Home extends AppCompatActivity {
                     if (task.isSuccessful()){
                         for (QueryDocumentSnapshot documentSnapshot : task.getResult()){
                             titulo.setText((CharSequence) documentSnapshot.get("Titulo"));
+                            cuerpoNoticia.setText((CharSequence) documentSnapshot.get("Cuerpo"));
                             Log.d(TAG, documentSnapshot.getId() + " => " + documentSnapshot.getData());
                         }
                     }

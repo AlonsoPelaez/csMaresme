@@ -26,25 +26,26 @@ import java.io.IOException;
 public class ChatAnonimo extends AppCompatActivity {
     private final String TAG = "PROYECTO_CS_MARESME___CHATANONIMO";
     private RecyclerView rvComentario;
-    private AdaptadorComentario adaptadorComentario;
+//    private AdaptadorComentario adaptadorComentario;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        setContentView(R.layout.comentarioanonimo);
         setContentView(R.layout.chatanonimo);
         Log.d(TAG, "onCreateOptionsMenu: ");
 
         Toast.makeText(this, "CHAT", Toast.LENGTH_SHORT).show();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        rvComentario = findViewById(R.id.rv_comentarios);
-
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        rvComentario.setLayoutManager(linearLayoutManager);
-
-        adaptadorComentario =  new AdaptadorComentario();
-        rvComentario.setAdapter(adaptadorComentario);
+//        rvComentario = findViewById(R.id.rv_comentarios);
+//
+//
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+//        rvComentario.setLayoutManager(linearLayoutManager);
+//
+//        adaptadorComentario =  new AdaptadorComentario();
+//        rvComentario.setAdapter(adaptadorComentario);
         Log.d(TAG, "onCreate: ");
 
 
@@ -78,56 +79,56 @@ public class ChatAnonimo extends AppCompatActivity {
 
     }
 
-    public class AdaptadorComentario extends RecyclerView.Adapter<AdaptadorComentario.AdaptadorComentarioHolder> implements View.OnClickListener {
-
-        @Override
-        public void onClick(View view) {
-
-        }
-
-        @NonNull
-        @Override
-        public AdaptadorComentario.AdaptadorComentarioHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-            View view = getLayoutInflater().inflate(R.layout.comentario_card, parent, false);
-            view.setOnClickListener(this);
-            Log.d(TAG, "onCreateViewHolder: ");
-            return new AdaptadorComentarioHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull AdaptadorComentario.AdaptadorComentarioHolder holder, int position) {
-            holder.imprimir(position);
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return 0;
-        }
-
-        class AdaptadorComentarioHolder extends RecyclerView.ViewHolder{
-            TextView tvTitulo, tvNombre, tvContenido, tvFecha;
-            ImageView imageUser;
-
-            public AdaptadorComentarioHolder(@NonNull View itemView) {
-                super(itemView);
-                Log.d(TAG, "AdaptadorComentarioHolder: ");
-                tvTitulo = itemView.findViewById(R.id.cvTitulo);
-                tvNombre = itemView.findViewById(R.id.cvNombre);
-                tvContenido = itemView.findViewById(R.id.cvContenido);
-                tvFecha = itemView.findViewById(R.id.cvFecha);
-                imageUser = itemView.findViewById(R.id.imageUser);
-
-            }
-            public void imprimir (int i){
-                Log.d(TAG, "imprimir: ");
-                tvTitulo.setText("titulo");
-                tvNombre.setText("nombre");
-                tvContenido.setText("contenido");
-                tvFecha.setText("fecha");
-//                Picasso.get().load(listaPeliculas.get(i).getPoster_path()).into(imageUser);
-            }
-        }
-    }
+//    public class AdaptadorComentario extends RecyclerView.Adapter<AdaptadorComentario.AdaptadorComentarioHolder> implements View.OnClickListener {
+//
+//        @Override
+//        public void onClick(View view) {
+//
+//        }
+//
+//        @NonNull
+//        @Override
+//        public AdaptadorComentario.AdaptadorComentarioHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//
+//            View view = getLayoutInflater().inflate(R.layout.comentario_card, parent, false);
+//            view.setOnClickListener(this);
+//            Log.d(TAG, "onCreateViewHolder: ");
+//            return new AdaptadorComentarioHolder(view);
+//        }
+//
+//        @Override
+//        public void onBindViewHolder(@NonNull AdaptadorComentario.AdaptadorComentarioHolder holder, int position) {
+//            holder.imprimir(position);
+//
+//        }
+//
+//        @Override
+//        public int getItemCount() {
+//            return 0;
+//        }
+//
+//        class AdaptadorComentarioHolder extends RecyclerView.ViewHolder{
+//            TextView tvTitulo, tvNombre, tvContenido, tvFecha;
+//            ImageView imageUser;
+//
+//            public AdaptadorComentarioHolder(@NonNull View itemView) {
+//                super(itemView);
+//                Log.d(TAG, "AdaptadorComentarioHolder: ");
+//                tvTitulo = itemView.findViewById(R.id.cvTitulo);
+//                tvNombre = itemView.findViewById(R.id.cvNombre);
+//                tvContenido = itemView.findViewById(R.id.cvContenido);
+//                tvFecha = itemView.findViewById(R.id.cvFecha);
+//                imageUser = itemView.findViewById(R.id.imageUser);
+//
+//            }
+//            public void imprimir (int i){
+//                Log.d(TAG, "imprimir: ");
+//                tvTitulo.setText("titulo");
+//                tvNombre.setText("nombre");
+//                tvContenido.setText("contenido");
+//                tvFecha.setText("fecha");
+////                Picasso.get().load(listaPeliculas.get(i).getPoster_path()).into(imageUser);
+//            }
+//        }
+//    }
 }
