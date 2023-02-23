@@ -41,11 +41,8 @@ public class Setting extends AppCompatActivity{
         Toast.makeText(this, "SETTING", Toast.LENGTH_SHORT).show();
 
 
-        sugerenciabutton = findViewById(R.id.button_sugerencia);
-        buttonreport = findViewById(R.id.button_report);
-        rateus = findViewById(R.id.button_rateus);
-        contactusbutton = findViewById(R.id.button_contactus);
 
+        sugerenciabutton = findViewById(R.id.button_sugerencia);
         sugerenciabutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +50,7 @@ public class Setting extends AppCompatActivity{
             }
         });
 
-
+        buttonreport = findViewById(R.id.button_report);
         buttonreport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,12 +60,16 @@ public class Setting extends AppCompatActivity{
 
 
 
+
+        rateus = findViewById(R.id.button_rateus);
         rateus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Calificanos.class));
             }
         });
+
+        contactusbutton = findViewById(R.id.button_contactus);
         contactusbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
