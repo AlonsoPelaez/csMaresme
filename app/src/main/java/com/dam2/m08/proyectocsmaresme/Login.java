@@ -70,7 +70,6 @@ public class Login extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
                                     showHome();
-//                                    limpiaCampos();
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -81,7 +80,7 @@ public class Login extends AppCompatActivity {
                                     showError(e.getMessage());
                                 }
                             });
-                }
+                }else showError("los campos no pueden estar vacios. Intentelo de nuevo!");
             }
         });
 
@@ -119,7 +118,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void showError(String mensaje){
-        AlertDialog.Builder alert= new AlertDialog.Builder(this);
+        AlertDialog.Builder alert= new AlertDialog.Builder(getApplicationContext());
         alert.setTitle("Error");
         alert.setMessage(mensaje);
         alert.setCancelable(false);

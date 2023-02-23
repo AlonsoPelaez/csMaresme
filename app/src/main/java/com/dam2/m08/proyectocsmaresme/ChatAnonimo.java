@@ -45,6 +45,7 @@ public class ChatAnonimo extends AppCompatActivity {
 
         adaptadorComentario =  new AdaptadorComentario();
         rvComentario.setAdapter(adaptadorComentario);
+        Log.d(TAG, "onCreate: ");
 
 
         // Set Home selected
@@ -90,7 +91,7 @@ public class ChatAnonimo extends AppCompatActivity {
 
             View view = getLayoutInflater().inflate(R.layout.comentario_card, parent, false);
             view.setOnClickListener(this);
-
+            Log.d(TAG, "onCreateViewHolder: ");
             return new AdaptadorComentarioHolder(view);
         }
 
@@ -111,6 +112,7 @@ public class ChatAnonimo extends AppCompatActivity {
 
             public AdaptadorComentarioHolder(@NonNull View itemView) {
                 super(itemView);
+                Log.d(TAG, "AdaptadorComentarioHolder: ");
                 tvTitulo = itemView.findViewById(R.id.cvTitulo);
                 tvNombre = itemView.findViewById(R.id.cvNombre);
                 tvContenido = itemView.findViewById(R.id.cvContenido);
@@ -119,6 +121,7 @@ public class ChatAnonimo extends AppCompatActivity {
 
             }
             public void imprimir (int i){
+                Log.d(TAG, "imprimir: ");
                 tvTitulo.setText("titulo");
                 tvNombre.setText("nombre");
                 tvContenido.setText("contenido");
