@@ -70,18 +70,20 @@ public class Home extends AppCompatActivity {
 
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(), Home.class));
+                        finish();
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.games:
                         startActivity(new Intent(getApplicationContext(), Games.class));
+                        finish();
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.chat:
                         startActivity(new Intent(getApplicationContext(), ChatAnonimo.class));
+                        finish();
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.setting:
-
                         startActivity(new Intent(getApplicationContext(), Setting.class));
                         overridePendingTransition(0, 0);
                         return true;

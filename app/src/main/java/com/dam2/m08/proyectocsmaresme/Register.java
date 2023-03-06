@@ -56,6 +56,7 @@ public class Register extends AppCompatActivity {
                             } else {
                                 Intent i = new Intent(getApplicationContext(), Login.class);
                                 startActivity(i);
+                                finish();
                                 Log.d(TAG, "onComplete: ");
                             }
                         });

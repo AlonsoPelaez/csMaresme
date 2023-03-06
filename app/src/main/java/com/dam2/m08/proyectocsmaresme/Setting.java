@@ -20,9 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Setting extends AppCompatActivity{
+public class Setting extends AppCompatActivity {
     private Button btn_logout;
-
 
 
     private final String TAG = "PROYECTO_CS_MARESME___SETTINGS";
@@ -39,7 +38,6 @@ public class Setting extends AppCompatActivity{
 
         setContentView(R.layout.setting);
         Toast.makeText(this, "SETTING", Toast.LENGTH_SHORT).show();
-
 
 
         sugerenciabutton = findViewById(R.id.button_sugerencia);
@@ -59,8 +57,6 @@ public class Setting extends AppCompatActivity{
         });
 
 
-
-
         rateus = findViewById(R.id.button_rateus);
         rateus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,24 +74,21 @@ public class Setting extends AppCompatActivity{
         });
 
 
-
-
-
         btn_logout = findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //                        funcion de cerrado de sesion
-                        SharedPreferences preferences = getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.clear();
-                        editor.apply();
+                SharedPreferences preferences = getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.apply();
 
-                        FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(getApplicationContext(), Login.class));
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                finish();
             }
         });
-
 
 
     }
