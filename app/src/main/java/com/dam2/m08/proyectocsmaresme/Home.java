@@ -5,54 +5,51 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.style.BackgroundColorSpan;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.Set;
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Home extends AppCompatActivity {
 
     private final String TAG = "PROYECTO_CS_MARESME___HOME";
-    private TextView titulo;
-    private TextView cuerpoNoticia;
-
+    private List<Noticia> noticiaList;
+    private RecyclerView recyclerView;
     @SuppressLint("MissingInflatedId")
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         mostrarDatos();
+        noticiaList = new ArrayList<>();
+        recyclerView = findViewById(R.id.recyclerView);
         Toast.makeText(this, "HOME", Toast.LENGTH_SHORT).show();
-        titulo = findViewById(R.id.titulo);
-        cuerpoNoticia = findViewById(R.id.cuerpoNoticia);
         //        recoge el email del usuario y lo mete en el sharedpreferences
         Intent intent = getIntent();
-        String usuario_email= intent.getStringExtra("usuario_email");
+        String usuario_email = intent.getStringExtra("usuario_email");
         Log.d(TAG, "onCreate: " + usuario_email);
 
-        SharedPreferences prefer= getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
+        SharedPreferences prefer = getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefer.edit();
-        editor.putString("usuario_email",usuario_email);
+        editor.putString("usuario_email", usuario_email);
         editor.apply();
         BottomNavigationView bottomNavigationView = findViewById(R.id.navView);
 
@@ -94,21 +91,34 @@ public class Home extends AppCompatActivity {
         });
     }
 
-    public void mostrarDatos(){
-        FirebaseFirestore db =FirebaseFirestore.getInstance();
+    public void mostrarDatos() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Noticias")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()){
-                        for (QueryDocumentSnapshot documentSnapshot : task.getResult()){
-                            titulo.setText((CharSequence) documentSnapshot.get("Titulo"));
-                            cuerpoNoticia.setText((CharSequence) documentSnapshot.get("Cuerpo"));
-                            Log.d(TAG, documentSnapshot.getId() + " => " + documentSnapshot.getData());
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                                Log.d(TAG, documentSnapshot.getId() + " => " + documentSnapshot.getData().get("Titulo"));
+                                Noticia noticia = new Noticia();
+                                noticia.setTitulo(documentSnapshot.getData().get("Titulo").toString());
+                                noticia.setCuerpo(documentSnapshot.getData().get("Cuerpo").toString());
+                                noticia.setImagen(documentSnapshot.getData().get("Imagen").toString());
+
+                                noticiaList.add(noticia);
+                            }
+
+                            putDataIntoReciclerView(noticiaList);
                         }
                     }
-                    }
                 });
+    }
+
+
+    private void putDataIntoReciclerView(List<Noticia> noticiaList){
+        Adaptery adaptery =new Adaptery(this,noticiaList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adaptery);
     }
 }
