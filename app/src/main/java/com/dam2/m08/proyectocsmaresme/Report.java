@@ -48,7 +48,7 @@ public class Report extends AppCompatActivity {
         });
     }
     public void SaveData() throws IOException {
-        EditText editTextTitle = findViewById(R.id.editTextOpinion);
+        EditText editTextTitle = findViewById(R.id.editTextSugerencias);
         Map<String, String> document = new HashMap<>();
 
         document.put("title", editTextTitle.getText().toString());

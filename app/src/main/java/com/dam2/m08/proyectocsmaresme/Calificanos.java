@@ -47,7 +47,7 @@ public class Calificanos extends AppCompatActivity {
     }
         public void SaveData() throws IOException {
 
-            EditText editTextTitle = findViewById(R.id.editTextOpinion);
+            EditText editTextTitle = findViewById(R.id.editTextSugerencias);
             Map<String, String> document = new HashMap<>();
             RatingBar ratingBar = findViewById(R.id.ratingBar);
             document.put("Rating", String.valueOf(ratingBar.getRating()) +"/5");

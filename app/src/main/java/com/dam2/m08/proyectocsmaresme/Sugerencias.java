@@ -2,6 +2,7 @@ package com.dam2.m08.proyectocsmaresme;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,16 +19,17 @@ import java.util.Random;
 
 public class Sugerencias extends AppCompatActivity {
 
-    private EditText editTextReport;
+    private EditText editTextSugerencias;
     private Button SendButton;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sugerencias);
         Toast.makeText(this, "SUGERENCIAS", Toast.LENGTH_SHORT).show();
-        editTextReport = findViewById(R.id.editTextOpinion);
+        editTextSugerencias = findViewById(R.id.editTextSugerencias);
         SendButton = findViewById(R.id.SendButton);
 
 
@@ -49,7 +51,7 @@ public class Sugerencias extends AppCompatActivity {
     }
 
     public void SaveData() throws IOException {
-        EditText editTextTitle = findViewById(R.id.editTextOpinion);
+        EditText editTextTitle = findViewById(R.id.editTextSugerencias);
         Map<String, String> document = new HashMap<>();
 
         document.put("title", editTextTitle.getText().toString());
