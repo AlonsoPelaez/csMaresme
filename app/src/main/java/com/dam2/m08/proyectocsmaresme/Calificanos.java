@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
@@ -48,8 +49,11 @@ public class Calificanos extends AppCompatActivity {
         public void SaveData() throws IOException {
             Map<String, String> document = new HashMap<>();
             RatingBar ratingBar = findViewById(R.id.ratingBar);
+            String firebaseUser = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
             document.put("Rating", ratingBar.getRating() +"/5.0");
             document.put("Opinion", editTextOpinion.getText().toString());
+            document.put("Sent By", firebaseUser);
             String dname = new String();
             for (int i = 0; i < 20; i++) {
                 Random r = new Random();
