@@ -96,6 +96,7 @@ public class Login extends AppCompatActivity {
 
     //metodo de inicio de sesion automatico
     private void session(){
+
         SharedPreferences prefer= getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
         String usuario_email = prefer.getString("usuario_email",null);
         Log.d(TAG, "usuario_email: "+ usuario_email);
