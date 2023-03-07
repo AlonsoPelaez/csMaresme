@@ -46,12 +46,10 @@ public class Calificanos extends AppCompatActivity {
         });
     }
         public void SaveData() throws IOException {
-
-            EditText editTextTitle = findViewById(R.id.editTextSugerencias);
             Map<String, String> document = new HashMap<>();
             RatingBar ratingBar = findViewById(R.id.ratingBar);
-            document.put("Rating", String.valueOf(ratingBar.getRating()) +"/5");
-            document.put("Opinion", editTextTitle.getText().toString());
+            document.put("Rating", ratingBar.getRating() +"/5.0");
+            document.put("Opinion", editTextOpinion.getText().toString());
             String dname = new String();
             for (int i = 0; i < 20; i++) {
                 Random r = new Random();
