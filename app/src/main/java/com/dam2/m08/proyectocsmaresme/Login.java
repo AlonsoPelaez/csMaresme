@@ -43,9 +43,6 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.login);
         setTitle("Login");
         getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azulInterfaz));
-
-
-
         session();
         setup();
 
