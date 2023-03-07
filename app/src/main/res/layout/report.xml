@@ -7,7 +7,7 @@
     tools:context=".Sugerencias">
 
     <EditText
-        android:id="@+id/editTextReport"
+        android:id="@+id/editTextOpinion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="224dp"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enviar"
-        app:layout_constraintEnd_toEndOf="@+id/editTextReport"
-        app:layout_constraintStart_toStartOf="@+id/editTextReport"
-        app:layout_constraintTop_toBottomOf="@+id/editTextReport" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextOpinion"
+        app:layout_constraintStart_toStartOf="@+id/editTextOpinion"
+        app:layout_constraintTop_toBottomOf="@+id/editTextOpinion" />
 </androidx.constraintlayout.widget.ConstraintLayout>
