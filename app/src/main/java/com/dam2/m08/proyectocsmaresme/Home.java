@@ -120,4 +120,8 @@ public class Home extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptery);
     }
+    @Override
+    public void onBackPressed (){
+
+    }
 }
