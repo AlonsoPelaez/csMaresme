@@ -7,5 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="azulInterfaz">#9EC9FC</color>
+    <color name="azulinterfazlogin">#9EC9FC</color>
+    <color name="azuloscurointerfaz">#3A3276</color>
 </resources>
