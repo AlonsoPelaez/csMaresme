@@ -2,7 +2,7 @@ package com.dam2.m08.proyectocsmaresme;
 
 public class Noticia {
     private String titulo;
-    private String imagen = "https://firebasestorage.googleapis.com/v0/b/proyecto-cs-maresme.appspot.com/o/Hospital_Matar%C3%B3_El_Maresme_Catalonia%20(1).jfif?alt=media&token=97e0c47c-2bde-4648-bda3-df8166d1cdd4";
+    private String imagen;
     private String cuerpo;
 
     public Noticia(){}
