@@ -23,7 +23,6 @@ public class Comentario implements Parcelable {
         this.contenido = contenido;
         this.fecha = fecha;
     }
-    public Comentario(){}
 
 
     protected Comentario(Parcel in) {
