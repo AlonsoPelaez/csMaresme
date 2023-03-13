@@ -7,12 +7,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,8 +24,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import org.checkerframework.checker.units.qual.A;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +38,7 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         mostrarDatos();
+        getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azuloscurointerfaz));
         noticiaList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
         Toast.makeText(this, "HOME", Toast.LENGTH_SHORT).show();
@@ -51,7 +51,9 @@ public class Home extends AppCompatActivity {
         SharedPreferences.Editor editor = prefer.edit();
         editor.putString("usuario_email", usuario_email);
         editor.apply();
-        BottomNavigationView bottomNavigationView = findViewById(R.id.navView);
+
+
+            BottomNavigationView bottomNavigationView = findViewById(R.id.navView);
 
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.home);
@@ -121,4 +123,5 @@ public class Home extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptery);
     }
+
 }

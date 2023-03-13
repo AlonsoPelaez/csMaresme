@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ public class Games extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.games);
+
         Toast.makeText(this, "GAMES", Toast.LENGTH_SHORT).show();
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.navView);
@@ -48,10 +50,13 @@ public class Games extends AppCompatActivity {
                     case R.id.setting:
                         startActivity(new Intent(getApplicationContext(),Setting.class));
                         overridePendingTransition(0,0);
+
                 }
                 return false;
             }
         });
+
+
 
     }
 

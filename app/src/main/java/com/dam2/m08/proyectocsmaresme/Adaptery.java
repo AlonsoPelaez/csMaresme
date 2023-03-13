@@ -1,6 +1,8 @@
 package com.dam2.m08.proyectocsmaresme;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -38,12 +42,11 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Noticia movie = noticiaList.get(position);
+        Noticia noticia = noticiaList.get(position);
 
         holder.titulo.setText(noticiaList.get(position).getTitulo());
         holder.cuerpo.setText(noticiaList.get(position).getCuerpo());
-        holder.imagen.setText(noticiaList.get(position).getImagen());
-
+        Glide.with(holder.foto).load(noticia.getImagen()).into(holder.foto);
     }
 
     @Override
@@ -56,15 +59,12 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> {
 
         TextView titulo;
         TextView cuerpo;
-        TextView imagen;
-
+        ImageView foto;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            foto = itemView.findViewById(R.id.foto);
             titulo = itemView.findViewById(R.id.titulo);
             cuerpo = itemView.findViewById(R.id.cuerpo);
-            imagen = itemView.findViewById(R.id.imagen);
-
         }
     }
 }
