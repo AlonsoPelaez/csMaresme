@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:id="@+id/btn_editar_comentario"
+            android:title="Editar"
+            android:icon="@drawable/item_edit_menu_comentario_chatanonimo"/>
+        <item android:id="@+id/btn_eliminar_comentario"
+            android:title="ELiminar"
+            android:icon="@drawable/item_delete_menu_comentario_chatanonimo"/>
+    </group>
+</menu>

@@ -2,16 +2,10 @@ package com.dam2.m08.proyectocsmaresme;
 
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,8 +25,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class ChatAnonimo extends AppCompatActivity {
     private final String TAG = "PROYECTO_CS_MARESME___CHATANONIMO";
@@ -61,6 +56,8 @@ public class ChatAnonimo extends AppCompatActivity {
         rvComentario.setAdapter(adaptadorComentarioAnonimo);
 
         spinner = findViewById(R.id.spinner_filtro);
+        String categorias = String.valueOf(R.array.categorias_chatanonimo_spinner);
+        spinner.setAdapter(new ArrayAdapter<String>(getApplicationContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, Collections.singletonList(categorias)));
 
 
         // Set Home selected

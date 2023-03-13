@@ -19,6 +19,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dam2.m08.proyectocsmaresme.Calificanos;
+import com.dam2.m08.proyectocsmaresme.Contactanos;
+import com.dam2.m08.proyectocsmaresme.Login;
+import com.dam2.m08.proyectocsmaresme.R;
+import com.dam2.m08.proyectocsmaresme.Report;
+import com.dam2.m08.proyectocsmaresme.Sugerencias;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Setting extends AppCompatActivity {
