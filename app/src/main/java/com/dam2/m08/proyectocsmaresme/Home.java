@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,7 +51,9 @@ public class Home extends AppCompatActivity {
         SharedPreferences.Editor editor = prefer.edit();
         editor.putString("usuario_email", usuario_email);
         editor.apply();
-        BottomNavigationView bottomNavigationView = findViewById(R.id.navView);
+
+
+            BottomNavigationView bottomNavigationView = findViewById(R.id.navView);
 
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.home);
@@ -120,8 +123,5 @@ public class Home extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptery);
     }
-    @Override
-    public void onBackPressed (){
 
-    }
 }
