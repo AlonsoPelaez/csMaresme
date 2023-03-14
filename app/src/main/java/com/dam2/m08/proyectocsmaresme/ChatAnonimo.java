@@ -117,4 +117,9 @@ public class ChatAnonimo extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

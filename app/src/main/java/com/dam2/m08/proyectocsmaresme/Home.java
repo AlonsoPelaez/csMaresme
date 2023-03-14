@@ -7,9 +7,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +21,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -34,7 +33,6 @@ public class Home extends AppCompatActivity {
     private final String TAG = "PROYECTO_CS_MARESME___HOME";
     private List<Noticia> noticiaList;
     private RecyclerView recyclerView;
-    private FloatingActionButton floatingActionButton;
     @SuppressLint("MissingInflatedId")
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +40,6 @@ public class Home extends AppCompatActivity {
         mostrarDatos();
         getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azuloscurointerfaz));
         noticiaList = new ArrayList<>();
-        floatingActionButton = findViewById(R.id.floatingButtonId);
         recyclerView = findViewById(R.id.recyclerView);
         Toast.makeText(this, "HOME", Toast.LENGTH_SHORT).show();
         //        recoge el email del usuario y lo mete en el sharedpreferences
@@ -54,14 +51,10 @@ public class Home extends AppCompatActivity {
         SharedPreferences.Editor editor = prefer.edit();
         editor.putString("usuario_email", usuario_email);
         editor.apply();
-        BottomNavigationView bottomNavigationView = findViewById(R.id.navView);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(getApplicationContext(), AddNoticia.class);
-                startActivity(intent1);
-            }
-        });
+
+
+            BottomNavigationView bottomNavigationView = findViewById(R.id.navView);
+
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.home);
 
@@ -131,7 +124,8 @@ public class Home extends AppCompatActivity {
         recyclerView.setAdapter(adaptery);
     }
     @Override
-    public void onBackPressed (){
+    public void onBackPressed() {
 
     }
+
 }

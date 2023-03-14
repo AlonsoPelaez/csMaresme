@@ -25,6 +25,7 @@ import com.dam2.m08.proyectocsmaresme.Login;
 import com.dam2.m08.proyectocsmaresme.R;
 import com.dam2.m08.proyectocsmaresme.Report;
 import com.dam2.m08.proyectocsmaresme.Sugerencias;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Setting extends AppCompatActivity {
@@ -98,6 +99,47 @@ public class Setting extends AppCompatActivity {
             }
         });
 
+
+        BottomNavigationView bottomNavigationView=findViewById(R.id.navView);
+
+        // Set Home selected
+        bottomNavigationView.setSelectedItemId(R.id.setting);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch(item.getItemId())
+                {
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(), Home.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.games:
+                        startActivity(new Intent(getApplicationContext(),Games.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.chat:
+                        startActivity(new Intent(getApplicationContext(), ChatAnonimo.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.setting:
+                        startActivity(new Intent(getApplicationContext(), Setting.class));
+                        overridePendingTransition(0,0);
+
+                }
+                return false;
+            }
+        });
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
 
     }
 }

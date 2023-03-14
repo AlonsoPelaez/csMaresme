@@ -86,4 +86,15 @@
         app:layout_constraintEnd_toEndOf="@+id/button_rateus"
         app:layout_constraintStart_toStartOf="@+id/button_rateus"
         app:layout_constraintTop_toBottomOf="@+id/button_rateus" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:backgroundTint="#4E468E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
