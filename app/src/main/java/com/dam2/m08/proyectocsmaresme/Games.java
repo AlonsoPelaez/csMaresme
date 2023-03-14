@@ -2,7 +2,6 @@ package com.dam2.m08.proyectocsmaresme;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -17,6 +16,7 @@ public class Games extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.games);
+
         Toast.makeText(this, "GAMES", Toast.LENGTH_SHORT).show();
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.navView);
@@ -31,7 +31,7 @@ public class Games extends AppCompatActivity {
                 switch(item.getItemId())
                 {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(),Home.class));
+                        startActivity(new Intent(getApplicationContext(), Home.class));
                         finish();
                         overridePendingTransition(0,0);
                         return true;
@@ -41,17 +41,20 @@ public class Games extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.chat:
-                        startActivity(new Intent(getApplicationContext(),ChatAnonimo.class));
+                        startActivity(new Intent(getApplicationContext(), ChatAnonimo.class));
                         finish();
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.setting:
-                        startActivity(new Intent(getApplicationContext(),Setting.class));
+                        startActivity(new Intent(getApplicationContext(), Setting.class));
                         overridePendingTransition(0,0);
+
                 }
                 return false;
             }
         });
+
+
 
     }
 

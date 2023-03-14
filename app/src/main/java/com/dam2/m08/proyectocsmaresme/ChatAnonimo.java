@@ -3,12 +3,9 @@ package com.dam2.m08.proyectocsmaresme;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,14 +25,15 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ChatAnonimo extends AppCompatActivity {
     private final String TAG = "PROYECTO_CS_MARESME___CHATANONIMO";
     private RecyclerView rvComentario;
-    private AdaptadorComentario adaptadorComentario;
+    private Spinner spinner;
+    private AdaptadorComentarioAnonimo adaptadorComentarioAnonimo;
     public static List<Comentario> listaComentarios;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,9 +52,12 @@ public class ChatAnonimo extends AppCompatActivity {
         rvComentario.setLayoutManager(linearLayoutManager);
         cargaComentarios();
 
-        adaptadorComentario =  new AdaptadorComentario(listaComentarios);
-        rvComentario.setAdapter(adaptadorComentario);
-        Log.d(TAG, "onCreate: ");
+        adaptadorComentarioAnonimo =  new AdaptadorComentarioAnonimo(getApplicationContext(), listaComentarios);
+        rvComentario.setAdapter(adaptadorComentarioAnonimo);
+
+        spinner = findViewById(R.id.spinner_filtro);
+        String categorias = String.valueOf(R.array.categorias_chatanonimo_spinner);
+        spinner.setAdapter(new ArrayAdapter<String>(getApplicationContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, Collections.singletonList(categorias)));
 
 
         // Set Home selected
@@ -97,13 +99,14 @@ public class ChatAnonimo extends AppCompatActivity {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for (DocumentSnapshot comentario: queryDocumentSnapshots) {
-//                    int id = Integer.parseInt(comentario.getString("id"));
+
+                    int id = Integer.parseInt(comentario.getString("id"));
                     String nombre = comentario.getString("nombre");
                     String titulo = comentario.getString("titulo");
                     String contenido = comentario.getString("contenido");
                     String fecha = comentario.getString("fecha");
-                    listaComentarios.add(new Comentario(13456,nombre,titulo,contenido,fecha));
-                    adaptadorComentario.notifyItemRangeChanged(listaComentarios.size(),10);
+                    listaComentarios.add(new Comentario(id,nombre,titulo,contenido,fecha));
+                    adaptadorComentarioAnonimo.notifyItemRangeChanged(listaComentarios.size(),10);
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -113,68 +116,5 @@ public class ChatAnonimo extends AppCompatActivity {
             }
         });
 
-    }
-
-    public class AdaptadorComentario extends RecyclerView.Adapter<AdaptadorComentario.AdaptadorComentarioHolder> implements View.OnClickListener {
-
-        List<Comentario> lista;
-        private View.OnClickListener listener;
-        public AdaptadorComentario(List<Comentario> listaCo){
-            this.lista = listaCo;
-        }
-        @Override
-        public void onClick(View view) {
-            if (listener!=null){
-                listener.onClick(view);
-            }
-        }
-
-        @NonNull
-        @Override
-        public AdaptadorComentario.AdaptadorComentarioHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-            View view = getLayoutInflater().inflate(R.layout.comentario_card, parent, false);
-            view.setOnClickListener(this);
-            Log.d(TAG, "onCreateViewHolder: ");
-            return new AdaptadorComentarioHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull AdaptadorComentarioHolder adaptadorComentarioHolder, int position) {
-            adaptadorComentarioHolder.imprimir(position);
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return lista.size();
-        }
-        public void setOnClickListener(View.OnClickListener listener){
-            this.listener = listener;
-        }
-
-        class AdaptadorComentarioHolder extends RecyclerView.ViewHolder{
-            TextView tvTitulo, tvNombre, tvContenido, tvFecha;
-            ImageView imageUser;
-
-            public AdaptadorComentarioHolder(@NonNull View itemView) {
-                super(itemView);
-                Log.d(TAG, "AdaptadorComentarioHolder: ");
-                tvTitulo = itemView.findViewById(R.id.cvTitulo);
-                tvNombre = itemView.findViewById(R.id.cvNombre);
-                tvContenido = itemView.findViewById(R.id.cvContenido);
-                tvFecha = itemView.findViewById(R.id.cvFecha);
-//                imageUser = itemView.findViewById(R.id.imageUser);
-
-            }
-            public void imprimir (int i){
-                Log.d(TAG, "imprimir: ");
-                tvTitulo.setText(""+ lista.get(i).getTitulo());
-                tvNombre.setText(""+lista.get(i).getNombre());
-                tvContenido.setText(""+lista.get(i).getContenido());
-                tvFecha.setText(""+lista.get(i).getFecha());
-//                Picasso.get().load(listaPeliculas.get(i).getPoster_path()).into(imageUser);0
-            }
-        }
     }
 }
