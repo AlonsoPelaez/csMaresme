@@ -6,26 +6,60 @@
     android:layout_height="match_parent"
     android:background="#3A3276">
 
-<TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Agregar Noticia"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/subirButtonNoticia"
         android:layout_width="139dp"
         android:layout_height="46dp"
+        android:layout_marginBottom="204dp"
         android:background="@drawable/boton_redondo_principal"
         android:text="Subir"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="361dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="136dp"
+        android:padding="5dp"
+        android:background="@drawable/boton_redondo_principal"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.667" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine3"
+        android:layout_width="361dp"
+        android:background="@drawable/boton_redondo_principal"
+        android:layout_height="101dp"
+        android:ems="10"
+        android:padding="5dp"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/subirButtonNoticia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Titulo de la noticia"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextMultiLine" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contenido de la noticia"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine3"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextMultiLine3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
