@@ -1,10 +1,14 @@
 package com.dam2.m08.proyectocsmaresme;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,8 +36,10 @@ public class ChatAnonimo extends AppCompatActivity {
     private final String TAG = "PROYECTO_CS_MARESME___CHATANONIMO";
     private RecyclerView rvComentario;
     private Spinner spinner;
+    private ImageView btn_add_comentario;
     private AdaptadorComentarioAnonimo adaptadorComentarioAnonimo;
     public static List<Comentario> listaComentarios;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +50,7 @@ public class ChatAnonimo extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 //        cargaDatos();
+        setTitle("");
         listaComentarios = new ArrayList<>();
         rvComentario = findViewById(R.id.rv_comentarios);
 
@@ -55,11 +62,34 @@ public class ChatAnonimo extends AppCompatActivity {
         adaptadorComentarioAnonimo =  new AdaptadorComentarioAnonimo(getApplicationContext(), listaComentarios);
         rvComentario.setAdapter(adaptadorComentarioAnonimo);
 
+        //spinner
         spinner = findViewById(R.id.spinner_filtro);
-        String categorias = String.valueOf(R.array.categorias_chatanonimo_spinner);
-        spinner.setAdapter(new ArrayAdapter<String>(getApplicationContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, Collections.singletonList(categorias)));
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.categorias_chatanonimo_spinner, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(),"se ha selecionado el item de "+parent.getSelectedItem() ,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
+        //btn_add_comentario
+        btn_add_comentario = findViewById(R.id.btn_add_comentario);
+        btn_add_comentario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"ha pulsado el boton de añadir comentario",Toast.LENGTH_SHORT).show();
+            }
+        });
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.chat);
 

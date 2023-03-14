@@ -5,7 +5,7 @@
             android:title="Editar"
             android:icon="@drawable/item_edit_menu_comentario_chatanonimo"/>
         <item android:id="@+id/btn_eliminar_comentario"
-            android:title="ELiminar"
+            android:title="Eliminar"
             android:icon="@drawable/item_delete_menu_comentario_chatanonimo"/>
     </group>
 </menu>

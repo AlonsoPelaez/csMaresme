@@ -1,6 +1,10 @@
 package com.dam2.m08.proyectocsmaresme;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Camera;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,6 +50,7 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
     @Override
     public void onBindViewHolder(@NonNull AdaptadorComentarioAnonimoHolder holder, int position) {
         holder.imprimir(position);
+
         holder.btn_menu_comentario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,10 +61,10 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.btn_editar_comentario:
-                                Toast.makeText(layoutInflater.getContext(), "ha pulsado el boton de editar comentario",Toast.LENGTH_LONG).show();
+                                Toast.makeText(layoutInflater.getContext(), "ha pulsado el boton de editar comentario",Toast.LENGTH_SHORT).show();
                                 return true;
                             case R.id.btn_eliminar_comentario:
-                                Toast.makeText(layoutInflater.getContext(), "ha pulsado el boton de eliminar comentario",Toast.LENGTH_LONG).show();
+                                Toast.makeText(layoutInflater.getContext(), "ha pulsado el boton de eliminar comentario",Toast.LENGTH_SHORT).show();
                                 return true;
                             default:
                                 return false;
@@ -69,6 +74,10 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
                 popupMenu.show();
             }
         });
+
+        holder.btn_menu_comentario.setImageDrawable(layoutInflater.getContext().getDrawable(R.drawable.menu_comentario_chatanonimo));
+
+        holder.imageUser.setImageDrawable(layoutInflater.getContext().getDrawable(R.drawable.logo_app_consorcimaresme));
     }
 
 
@@ -91,8 +100,8 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
             tvNombre = itemView.findViewById(R.id.cvNombre);
             tvContenido = itemView.findViewById(R.id.cvContenido);
             tvFecha = itemView.findViewById(R.id.cvFecha);
+            imageUser = itemView.findViewById(R.id.imageUser);
             btn_menu_comentario = itemView.findViewById(R.id.btn_menu_comentario);
-//                imageUser = itemView.findViewById(R.id.imageUser);
 
         }
         public void imprimir (int i){
@@ -101,7 +110,7 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
             tvNombre.setText(""+lista.get(i).getNombre());
             tvContenido.setText(""+lista.get(i).getContenido());
             tvFecha.setText(""+lista.get(i).getFecha());
-//                Picasso.get().load(listaPeliculas.get(i).getPoster_path()).into(imageUser);0
+        //                Picasso.get().load(listaPeliculas.get(i).getPoster_path()).into(imageUser);0
         }
     }
 }

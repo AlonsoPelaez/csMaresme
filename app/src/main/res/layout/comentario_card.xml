@@ -5,8 +5,9 @@
     android:id="@+id/cardComentario"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    app:cardBackgroundColor="#377ec6"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="10dp"
+    app:cardBackgroundColor="#4E468E"
     app:cardCornerRadius="12dp">
     <LinearLayout
         android:id="@+id/card"
@@ -32,7 +33,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_margin="5dp"
-                    app:srcCompat="@drawable/botonredondo" />
+                    app:srcCompat="@drawable/logo_app_consorcimaresme" />
 
                 <TextView
                     android:id="@+id/cvNombre"
@@ -52,7 +53,7 @@
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/menu_comentario_chatanonimo" />
+                    app:srcCompat="@drawable/menu_comentario_chatanonimo_2" />
 
             </LinearLayout>
 
