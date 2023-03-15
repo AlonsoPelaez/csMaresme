@@ -1,13 +1,9 @@
-package com.dam2.m08.proyectocsmaresme;
+package com.dam2.m08.proyectocsmaresme.foroanonimo;
 
-import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
-
-import java.util.Date;
 
 public class Comentario implements Parcelable {
     private int id;

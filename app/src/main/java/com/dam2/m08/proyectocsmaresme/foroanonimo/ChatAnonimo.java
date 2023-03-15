@@ -1,7 +1,6 @@
-package com.dam2.m08.proyectocsmaresme;
+package com.dam2.m08.proyectocsmaresme.foroanonimo;
 
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -20,6 +19,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 ;
+import com.dam2.m08.proyectocsmaresme.R;
+import com.dam2.m08.proyectocsmaresme.juegos.Games;
+import com.dam2.m08.proyectocsmaresme.noticias.Home;
+import com.dam2.m08.proyectocsmaresme.settings.Setting;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -29,7 +32,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ChatAnonimo extends AppCompatActivity {

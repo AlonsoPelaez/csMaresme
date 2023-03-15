@@ -1,4 +1,4 @@
-package com.dam2.m08.proyectocsmaresme;
+package com.dam2.m08.proyectocsmaresme.settings;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dam2.m08.proyectocsmaresme.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.dam2.m08.proyectocsmaresme;
+package com.dam2.m08.proyectocsmaresme.juegos;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dam2.m08.proyectocsmaresme.foroanonimo.ChatAnonimo;
+import com.dam2.m08.proyectocsmaresme.R;
+import com.dam2.m08.proyectocsmaresme.settings.Setting;
+import com.dam2.m08.proyectocsmaresme.noticias.Home;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Games extends AppCompatActivity {

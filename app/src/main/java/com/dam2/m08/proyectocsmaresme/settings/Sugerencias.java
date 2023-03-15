@@ -1,4 +1,4 @@
-package com.dam2.m08.proyectocsmaresme;
+package com.dam2.m08.proyectocsmaresme.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dam2.m08.proyectocsmaresme.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;

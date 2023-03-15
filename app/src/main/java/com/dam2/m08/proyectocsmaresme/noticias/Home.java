@@ -1,4 +1,4 @@
-package com.dam2.m08.proyectocsmaresme;
+package com.dam2.m08.proyectocsmaresme.noticias;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,9 +7,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,10 +17,15 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dam2.m08.proyectocsmaresme.foroanonimo.ChatAnonimo;
+import com.dam2.m08.proyectocsmaresme.juegos.Games;
+import com.dam2.m08.proyectocsmaresme.R;
+import com.dam2.m08.proyectocsmaresme.settings.Setting;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -33,6 +38,8 @@ public class Home extends AppCompatActivity {
     private final String TAG = "PROYECTO_CS_MARESME___HOME";
     private List<Noticia> noticiaList;
     private RecyclerView recyclerView;
+    private FloatingActionButton floatingActionButton;
+
     @SuppressLint("MissingInflatedId")
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +60,16 @@ public class Home extends AppCompatActivity {
         editor.apply();
 
 
-            BottomNavigationView bottomNavigationView = findViewById(R.id.navView);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navView);
+
+        floatingActionButton = findViewById(R.id.floatingButtonId);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(), AddNoticia.class);
+                startActivity(intent1);
+            }
+        });
 
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.home);
@@ -118,11 +134,12 @@ public class Home extends AppCompatActivity {
     }
 
 
-    private void putDataIntoReciclerView(List<Noticia> noticiaList){
-        Adaptery adaptery =new Adaptery(this,noticiaList);
+    private void putDataIntoReciclerView(List<Noticia> noticiaList) {
+        Adaptery adaptery = new Adaptery(this, noticiaList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptery);
     }
+
     @Override
     public void onBackPressed() {
 

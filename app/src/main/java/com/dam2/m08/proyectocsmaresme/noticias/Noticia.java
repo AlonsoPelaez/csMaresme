@@ -1,4 +1,4 @@
-package com.dam2.m08.proyectocsmaresme;
+package com.dam2.m08.proyectocsmaresme.noticias;
 
 public class Noticia {
     private String titulo;

@@ -1,30 +1,24 @@
-package com.dam2.m08.proyectocsmaresme;
+package com.dam2.m08.proyectocsmaresme.settings;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dam2.m08.proyectocsmaresme.Calificanos;
-import com.dam2.m08.proyectocsmaresme.Contactanos;
+import com.dam2.m08.proyectocsmaresme.foroanonimo.ChatAnonimo;
 import com.dam2.m08.proyectocsmaresme.Login;
 import com.dam2.m08.proyectocsmaresme.R;
-import com.dam2.m08.proyectocsmaresme.Report;
-import com.dam2.m08.proyectocsmaresme.Sugerencias;
+import com.dam2.m08.proyectocsmaresme.juegos.Games;
+import com.dam2.m08.proyectocsmaresme.noticias.Home;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -117,7 +111,7 @@ public class Setting extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.games:
-                        startActivity(new Intent(getApplicationContext(),Games.class));
+                        startActivity(new Intent(getApplicationContext(), Games.class));
                         finish();
                         overridePendingTransition(0,0);
                         return true;

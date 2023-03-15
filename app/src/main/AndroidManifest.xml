@@ -16,28 +16,28 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".Sugerencias"
+            android:name=".settings.Sugerencias"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Report"
+            android:name=".settings.Report"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Calificanos"
+            android:name=".settings.Calificanos"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Contactanos"
+            android:name=".settings.Contactanos"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -66,7 +66,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Home"
+            android:name=".noticias.Home"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -77,7 +77,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Games"
+            android:name=".juegos.Games"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -88,7 +88,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ChatAnonimo"
+            android:name=".foroanonimo.ChatAnonimo"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -99,7 +99,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Setting"
+            android:name=".settings.Setting"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -110,7 +110,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AddNoticia"
+            android:name=".noticias.AddNoticia"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
