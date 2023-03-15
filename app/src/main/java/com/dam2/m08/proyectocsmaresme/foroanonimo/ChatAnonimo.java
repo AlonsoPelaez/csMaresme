@@ -89,7 +89,8 @@ public class ChatAnonimo extends AppCompatActivity {
         btn_add_comentario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"ha pulsado el boton de añadir comentario",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(),addComentario.class);
+                startActivity(intent);
             }
         });
         // Set Home selected
