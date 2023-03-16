@@ -20,4 +20,5 @@
     //Sugerencias
     <string name="InserteTexto">Inserte Texto</string>
     <string name="Enviar">Enviar</string>
+    <string name="Telefono">Teléfono: 937 41 77 00</string>
 </resources>
