@@ -116,6 +116,14 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".foroanonimo.AggComentario"
+            android:theme="@style/Theme.AppCompat.NoActionBar.TemaPopup"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
     </application>
 
 </manifest>
