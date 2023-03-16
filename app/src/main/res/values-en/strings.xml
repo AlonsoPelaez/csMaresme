@@ -23,5 +23,7 @@
     <string name="TextViewContactanos">Rate us! How has your experience with us been?</string>
     <string name="EscribeOpinion">Write your opinion</string>
     <string name="EncasoOpinion">If you want to be more specific, you can also give your opinion here</string>
+    <string name="Contraseña">Password</string>
+    <string name="IniciaSesion">Log In</string>
 
 </resources>
