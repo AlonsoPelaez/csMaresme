@@ -24,4 +24,10 @@
     </string-array>
     <string name="titulo_chatanonimo" >Chat Anonimo</string>
     <string name="Noticias">Noticias</string>
+    <string name="Configuracion">Configuracion</string>
+    <string name="CerrarSesion">Cerrar Sesión</string>
+    <string name="EnviarSugerencia">Enviar Sugerencia</string>
+    <string name="EnviarReporte">Enviar un reporte de error</string>
+    <string name="Calificanos">Calificanos</string>
+    <string name="Contactanos">Contáctanos</string>
 </resources>

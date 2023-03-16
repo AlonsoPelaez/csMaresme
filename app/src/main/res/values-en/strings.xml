@@ -2,4 +2,11 @@
 <resources>
     <string name="titulo_chatanonimo">Anonymous Chat</string>
     <string name="Noticias">News</string>
+    <string name="Configuracion">Settings</string>
+    <string name="CerrarSesion">Log out</string>
+    <string name="EnviarSugerencia">Send suggestion</string>
+    <string name="EnviarReporte">Send an error report</string>
+    <string name="Calificanos">Rate Us
+    </string>
+    <string name="Contactanos">Contact Us</string>
 </resources>
