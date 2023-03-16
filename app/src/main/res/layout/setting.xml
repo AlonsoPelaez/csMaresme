@@ -17,19 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner_CambiarIdioma"
-        android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="64dp"
-        android:background="#4E468E"
-        android:contentDescription="@string/Cambiar_idioma"
-        android:entries="@array/idiomas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:ignore="TouchTargetSizeCheck" />
-
 
     <Button
         android:id="@+id/btn_logout"
@@ -39,19 +26,19 @@
         android:backgroundTint="#4E468E"
         android:text="Cerrar sesion"
         app:layout_constraintEnd_toEndOf="@+id/button_contactus"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_contactus" />
 
     <Button
         android:id="@+id/button_sugerencia"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:background="#4E468E"
         android:text="Enviar Sugerencia"
-        app:layout_constraintEnd_toEndOf="@+id/spinner_CambiarIdioma"
-        app:layout_constraintStart_toStartOf="@+id/spinner_CambiarIdioma"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_CambiarIdioma"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
@@ -60,9 +47,8 @@
         android:layout_height="wrap_content"
         android:background="#4E468E"
         android:text="Enviar un reporte de error"
-        app:layout_constraintEnd_toEndOf="@+id/spinner_CambiarIdioma"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/button_sugerencia"
         app:layout_constraintTop_toBottomOf="@+id/button_sugerencia"
         tools:ignore="TouchTargetSizeCheck" />
 
@@ -73,7 +59,7 @@
         android:background="#4E468E"
         android:text="Calíficanos"
         app:layout_constraintEnd_toEndOf="@+id/button_report"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_report"
         tools:ignore="TouchTargetSizeCheck" />
 

@@ -1,0 +1,29 @@
+<resources>
+    //Settings
+    <string-array name="idiomas">
+        <item name="Catalan" type="string">Catalan</item>
+        <item name="Espanyol" type="string">Espanyol</item>
+        <item name="Ingles" type="string">Ingles</item>
+    </string-array>
+    <string-array name="Sugerencias">
+        <item name="Enviar" type="string">Enviar Sugerències</item>
+    </string-array>
+    <string-array name="Report">
+        <item name="Report" type="string">Reportar un problema</item>
+    </string-array>
+    <string-array name="RateUs">
+        <item name="Rate" type="string">Calificans</item>
+    </string-array>
+    <string-array name="ContactUs">
+        <item name="Contact" type="string">Contàctans</item>
+    </string-array>
+    //Chat Anonimo
+    <string-array name="categorias_chatanonimo_spinner">
+        <item name="default" >Selecciona un tema</item>
+        <item name="tema1" type="String">tema 1</item>
+        <item name="tema2" type="String">tema 2</item>
+        <item  name="tema3" type="String"> tema 3</item>
+    </string-array>
+    <string name="titulo_chatanonimo" >Xat Anònim</string>
+    <string name="Noticias">Notícies</string>
+</resources>
