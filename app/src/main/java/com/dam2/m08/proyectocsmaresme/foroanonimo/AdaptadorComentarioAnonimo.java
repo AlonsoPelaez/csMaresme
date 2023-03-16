@@ -58,7 +58,6 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
                         switch (item.getItemId()){
                             case R.id.btn_editar_comentario:
                                 Toast.makeText(layoutInflater.getContext(), "ha pulsado el boton de editar comentario",Toast.LENGTH_SHORT).show();
-
                                 return true;
                             case R.id.btn_eliminar_comentario:
                                 Toast.makeText(layoutInflater.getContext(), "ha pulsado el boton de eliminar comentario",Toast.LENGTH_SHORT).show();
