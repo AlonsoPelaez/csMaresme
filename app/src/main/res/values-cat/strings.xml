@@ -15,5 +15,8 @@
     </string-array>
     <string name="titulo_chatanonimo" >Xat Anònim</string>
     <string name="Noticias">Notícies</string>
+    //Sugerencias
+    <string name="InserteTexto">Insereix Text</string>
+    <string name="Enviar">Enviar</string>
 
 </resources>
