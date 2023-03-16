@@ -24,6 +24,8 @@
     <string name="EncasoOpinion">En cas de voler ser més específic, aquí també pots donar la teva opinió</string>
     <string name="Contraseña">Contrasenya</string>
     <string name="IniciaSesion">Inicia Sessió</string>
+    <string name="NuevaContraseña">Nova Contrasenya</string>
+    <string name="Registrate">Registra\'t</string>
 
 
 </resources>

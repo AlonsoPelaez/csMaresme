@@ -25,5 +25,7 @@
     <string name="EncasoOpinion">If you want to be more specific, you can also give your opinion here</string>
     <string name="Contraseña">Password</string>
     <string name="IniciaSesion">Log In</string>
+    <string name="NuevaContraseña">New Password</string>
+    <string name="Registrate">Register</string>
 
 </resources>

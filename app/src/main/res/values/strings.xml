@@ -26,5 +26,7 @@
     <string name="EncasoOpinion">En caso de querer ser más específico, aquí también puedes dar tu opinión</string>
     <string name="Contraseña">Contraseña</string>
     <string name="IniciaSesion">Inicia Sesión</string>
+    <string name="NuevaContraseña">Nueva Contraseña</string>
+    <string name="Registrate">Registrate</string>
 
 </resources>
