@@ -1,24 +1,14 @@
 <resources>
-    <string name="app_name">Consorci Del Maresme</string>
-    <string name="prefer_file">com.dam2.m08.proyectocsmaresme.Reference_File</string>
-    <string name="Cambiar_idioma">Cambiar idioma</string>
-    <string-array name="idiomas">
-        <item name="Catalan" type="string">Catalan</item>
-        <item name="Espanyol" type="string">Espanyol</item>
-        <item name="Ingles" type="string">Ingles</item>
-    </string-array>
-    <string-array name="Sugerencias">
-        <item name="Enviar" type="string">Enviar Sugerencias</item>
-    </string-array>
-    <string-array name="Report">
-        <item name="Report" type="string">Reportar un problema</item>
-    </string-array>
-    <string-array name="RateUs">
-        <item name="Rate" type="string">Calificanos</item>
-    </string-array>
-    <string-array name="ContactUs">
-        <item name="Contact" type="string">Contáctanos</item>
-    </string-array>
+    <string name="app_name" translatable="false">Consorci Del Maresme</string>
+    <string name="prefer_file" translatable="false">com.dam2.m08.proyectocsmaresme.Reference_File</string>
+    //Settings
+    <string name="Configuracion">Configuracion</string>
+    <string name="CerrarSesion">Cerrar Sesión</string>
+    <string name="EnviarSugerencia">Enviar Sugerencia</string>
+    <string name="EnviarReporte">Enviar un reporte de error</string>
+    <string name="Calificanos">Calificanos</string>
+    <string name="Contactanos">Contáctanos</string>
+    //Chat Anonimo
     <string-array name="categorias_chatanonimo_spinner">
         <item name="default" >Elige un tema</item>
         <item name="tema1" >tema 1</item>
@@ -26,4 +16,13 @@
         <item  name="tema3">tema 3</item>
     </string-array>
     <string name="titulo_chatanonimo" >Chat Anonimo</string>
+    <string name="Noticias">Noticias</string>
+    //Sugerencias
+    <string name="InserteTexto">Inserte Texto</string>
+    <string name="Enviar">Enviar</string>
+    <string name="Telefono">Teléfono: 937 41 77 00</string>
+    <string name="TextViewContactanos">¡Calificanos! ¿Cómo ha sido tu experiencia con nosotros?</string>
+    <string name="EscribeOpinion">Escribe tu opinión</string>
+    <string name="EncasoOpinion">En caso de querer ser más específico, aquí también puedes dar tu opinión</string>
+
 </resources>
