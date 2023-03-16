@@ -22,16 +22,21 @@ import com.dam2.m08.proyectocsmaresme.juegos.Games;
 import com.dam2.m08.proyectocsmaresme.R;
 import com.dam2.m08.proyectocsmaresme.settings.Setting;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class Home extends AppCompatActivity {
 
@@ -52,17 +57,22 @@ public class Home extends AppCompatActivity {
         //        recoge el email del usuario y lo mete en el sharedpreferences
         Intent intent = getIntent();
         String usuario_email = intent.getStringExtra("usuario_email");
+        String rol = intent.getStringExtra("rol");
         Log.d(TAG, "onCreate: " + usuario_email);
 
         SharedPreferences prefer = getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefer.edit();
         editor.putString("usuario_email", usuario_email);
         editor.apply();
-
-
+        floatingActionButton = findViewById(R.id.floatingButtonId);
+        System.out.println("--->>>" + rol + usuario_email);
+        if (Objects.equals(rol, "Administrador")){
+            floatingActionButton.setVisibility(View.VISIBLE);
+        } else {
+            floatingActionButton.setVisibility(View.INVISIBLE);
+        }
         BottomNavigationView bottomNavigationView = findViewById(R.id.navView);
 
-        floatingActionButton = findViewById(R.id.floatingButtonId);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

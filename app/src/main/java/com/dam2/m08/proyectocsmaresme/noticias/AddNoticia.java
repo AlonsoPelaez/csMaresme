@@ -1,5 +1,6 @@
 package com.dam2.m08.proyectocsmaresme.noticias;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
@@ -36,11 +37,10 @@ public class AddNoticia extends AppCompatActivity {
     private EditText addNoticiaContenido;
     private ProgressBar progressBar;
     private Button elegirFoto;
-    private ImageView imageView;
     private FirebaseStorage storage = FirebaseStorage.getInstance("gs://proyecto-cs-maresme.appspot.com/");
     private String titulo;
     private String cuerpo;
-    private String foto;
+    private ImageView imageView;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,9 +53,7 @@ public class AddNoticia extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBarAddNoticia);
         progressBar.setVisibility(View.INVISIBLE);
         elegirFoto = findViewById(R.id.subirFotoAddNoticia);
-        imageView = findViewById(R.id.checkId);
-        imageView.setVisibility(View.INVISIBLE);
-
+        imageView = findViewById(R.id.volver);
         elegirFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,18 +65,15 @@ public class AddNoticia extends AppCompatActivity {
                     gallery.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(gallery, GALLERY_REQ_CODE);
                 }
+            }
+        });
 
-
-
-               /* progressBar.setVisibility(View.VISIBLE);
-                ObjectAnimator.ofInt(progressBar, "progress", 100)
-                        .setDuration(500)
-                        .start();
-                ObjectAnimator objectAnimator = ObjectAnimator.ofInt(progressBar, "progress", 100);
-                objectAnimator.setDuration(500);
-                objectAnimator.start();
-                imageView.setVisibility(View.VISIBLE);
-*/
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Home.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -89,6 +84,13 @@ public class AddNoticia extends AppCompatActivity {
 
         if (resultCode == RESULT_OK) {
             if (requestCode == GALLERY_REQ_CODE) {
+                progressBar.setVisibility(View.VISIBLE);
+                ObjectAnimator.ofInt(progressBar, "progress", 100)
+                        .setDuration(500)
+                        .start();
+                ObjectAnimator objectAnimator = ObjectAnimator.ofInt(progressBar, "progress", 100);
+                objectAnimator.setDuration(500);
+                objectAnimator.start();
                 enviarButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

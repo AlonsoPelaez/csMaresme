@@ -23,6 +23,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class Login extends AppCompatActivity {
 
@@ -32,14 +38,14 @@ public class Login extends AppCompatActivity {
     private TextView enlaceRegistro;
     private final String TAG ="PROYECTO_CS_MARESME___LOGIN";
     private FirebaseAuth firebaseAuth;
-
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private String rol;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         setTitle("Login");
         getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azulinterfazlogin));
-        session();
         setup();
 
     }
@@ -62,7 +68,27 @@ public class Login extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-                                    showHome();
+
+
+                                    db.collection("Usuarios").document(usuario_login.getText().toString()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                            if (Objects.equals(documentSnapshot.getString("Rol"), "Administrador")){
+                                               Toast.makeText(getApplicationContext(), "Bienvenido Administrador", Toast.LENGTH_SHORT).show();
+                                               rol = "Administrador";
+                                            } else if (Objects.equals(documentSnapshot.getString("Rol"), "Usuario")){
+                                                Toast.makeText(getApplicationContext(), "Bienvenido Usuario", Toast.LENGTH_SHORT).show();
+                                                rol = "Usuario";
+                                            } else {
+                                                Map<String, String> usuarios = new HashMap<>();
+                                                usuarios.put("Rol","usuario");
+                                                db.collection("Usuarios").document(usuario_login.getText().toString()).set(usuarios);
+                                                rol = "Usuario";
+                                                Toast.makeText(getApplicationContext(), "Bienvenido usuario", Toast.LENGTH_SHORT).show();
+                                            }
+                                            showHome(rol);
+                                        }
+                                    });
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -91,23 +117,11 @@ public class Login extends AppCompatActivity {
 //    }
 
     //metodo de inicio de sesion automatico
-    private void session(){
 
-        SharedPreferences prefer= getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
-        String usuario_email = prefer.getString("usuario_email",null);
-        Log.d(TAG, "usuario_email: "+ usuario_email);
-
-        if (usuario_email != null){
-            Intent intent = new Intent(getApplicationContext(), Home.class);
-            intent.putExtra("usuario_email",usuario_email);
-            Log.d(TAG, "usuario_email: "+ usuario_email);
-            startActivity(intent);
-        }
-    }
-
-    public void showHome(){
+    public void showHome(String rol){
         Intent intent = new Intent(getApplicationContext(), Home.class);
-        intent.putExtra("usuario_email",usuario_login.getText().toString());
+        intent.putExtra("usuario_email", usuario_login.getText().toString());
+        intent.putExtra("rol", rol);
         startActivity(intent);
     }
 
