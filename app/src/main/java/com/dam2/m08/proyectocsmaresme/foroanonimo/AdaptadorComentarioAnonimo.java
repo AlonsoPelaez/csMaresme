@@ -58,6 +58,7 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
                         switch (item.getItemId()){
                             case R.id.btn_editar_comentario:
                                 Toast.makeText(layoutInflater.getContext(), "ha pulsado el boton de editar comentario",Toast.LENGTH_SHORT).show();
+
                                 return true;
                             case R.id.btn_eliminar_comentario:
                                 Toast.makeText(layoutInflater.getContext(), "ha pulsado el boton de eliminar comentario",Toast.LENGTH_SHORT).show();
@@ -71,8 +72,7 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
             }
         });
 
-        holder.btn_menu_comentario.setImageDrawable(layoutInflater.getContext().getDrawable(R.drawable.menu_comentario_chatanonimo));
-
+        holder.btn_menu_comentario.setImageDrawable(layoutInflater.getContext().getDrawable(R.drawable.menu_comentario_chatanonimo_2));
         holder.imageUser.setImageDrawable(layoutInflater.getContext().getDrawable(R.drawable.logo_app_consorcimaresme));
     }
 
@@ -86,7 +86,7 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
     }
 
     class AdaptadorComentarioAnonimoHolder extends RecyclerView.ViewHolder{
-        TextView tvTitulo, tvNombre, tvContenido, tvFecha;
+        TextView tvTitulo, tvNombre, tvContenido, tvFecha, tvNombreCategoria;
         ImageView imageUser, btn_menu_comentario;
 
         public AdaptadorComentarioAnonimoHolder(@NonNull View itemView) {
@@ -98,7 +98,7 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
             tvFecha = itemView.findViewById(R.id.cvFecha);
             imageUser = itemView.findViewById(R.id.imageUser);
             btn_menu_comentario = itemView.findViewById(R.id.btn_menu_comentario);
-
+            tvNombreCategoria = itemView.findViewById(R.id.nombre_categoria);
         }
         public void imprimir (int i){
 
@@ -106,7 +106,7 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
             tvNombre.setText(""+lista.get(i).getNombre());
             tvContenido.setText(""+lista.get(i).getContenido());
             tvFecha.setText(""+lista.get(i).getFecha());
-        //                Picasso.get().load(listaPeliculas.get(i).getPoster_path()).into(imageUser);0
+//            tvNombreCategoria.setText(""+lista.get(i).getNombreCategoria());
         }
     }
 }

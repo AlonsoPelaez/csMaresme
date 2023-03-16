@@ -64,6 +64,7 @@ public class ChatAnonimo extends AppCompatActivity {
         adaptadorComentarioAnonimo =  new AdaptadorComentarioAnonimo(getApplicationContext(), listaComentarios);
         rvComentario.setAdapter(adaptadorComentarioAnonimo);
 
+
         //spinner
         spinner = findViewById(R.id.spinner_filtro);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -89,7 +90,7 @@ public class ChatAnonimo extends AppCompatActivity {
         btn_add_comentario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),addComentario.class);
+                Intent intent = new Intent(getApplicationContext(),AddComentario.class);
                 startActivity(intent);
             }
         });
