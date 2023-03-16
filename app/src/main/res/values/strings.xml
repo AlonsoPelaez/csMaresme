@@ -21,4 +21,8 @@
     <string name="InserteTexto">Inserte Texto</string>
     <string name="Enviar">Enviar</string>
     <string name="Telefono">Teléfono: 937 41 77 00</string>
+    <string name="TextViewContactanos">¡Calificanos! ¿Cómo ha sido tu experiencia con nosotros?</string>
+    <string name="EscribeOpinion">Escribe tu opinión</string>
+    <string name="EncasoOpinion">En caso de querer ser más específico, aquí también puedes dar tu opinión</string>
+
 </resources>

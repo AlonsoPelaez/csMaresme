@@ -1,0 +1,27 @@
+<resources>
+    //Settings
+    <string name="Configuracion">Configuració</string>
+    <string name="CerrarSesion">Tancar Sessió</string>
+    <string name="EnviarSugerencia">Enviar suggeriment</string>
+    <string name="EnviarReporte">Enviar un informe d\'error</string>
+    <string name="Calificanos">Calificans</string>
+    <string name="Contactanos">Contactans</string>
+    //Chat Anonimo
+    <string-array name="categorias_chatanonimo_spinner">
+        <item name="default" >Selecciona un tema</item>
+        <item name="tema1" type="String">tema 1</item>
+        <item name="tema2" type="String">tema 2</item>
+        <item  name="tema3" type="String"> tema 3</item>
+    </string-array>
+    <string name="titulo_chatanonimo" >Xat Anònim</string>
+    <string name="Noticias">Notícies</string>
+    //Sugerencias
+    <string name="InserteTexto">Insereix Text</string>
+    <string name="Enviar">Enviar</string>
+    <string name="Telefono">Telèfon 937 41 77 00</string>
+    <string name="TextViewContactanos">Qualifica\'ns! Com ha estat la teva experiència amb nosaltres?</string>
+    <string name="EscribeOpinion">Escriu la teva opinió</string>
+    <string name="EncasoOpinion">En cas de voler ser més específic, aquí també pots donar la teva opinió</string>
+
+
+</resources>

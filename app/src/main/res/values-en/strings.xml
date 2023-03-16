@@ -20,4 +20,8 @@
     <string name="InserteTexto">Insert Text</string>
     <string name="Enviar">Send</string>
     <string name="Telefono">Phone Number 937 41 77 00</string>
+    <string name="TextViewContactanos">Rate us! How has your experience with us been?</string>
+    <string name="EscribeOpinion">Write your opinion</string>
+    <string name="EncasoOpinion">If you want to be more specific, you can also give your opinion here</string>
+
 </resources>
