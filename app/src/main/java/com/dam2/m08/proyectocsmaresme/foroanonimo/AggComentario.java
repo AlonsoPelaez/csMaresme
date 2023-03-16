@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam2.m08.proyectocsmaresme.R;
 
-public class AddComentario extends AppCompatActivity {
+public class AggComentario extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
