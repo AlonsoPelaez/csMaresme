@@ -4,13 +4,14 @@ public class Noticia {
     private String titulo;
     private String imagen;
     private String cuerpo;
-
+    private String id;
     public Noticia(){}
 
-    public Noticia(String titulo, String imagen, String cuerpo) {
+    public Noticia(String titulo, String imagen, String cuerpo, String id) {
         this.titulo = titulo;
         this.imagen = imagen;
         this.cuerpo = cuerpo;
+        this.id = id;
     }
 
     public String getTitulo() {
@@ -37,5 +38,11 @@ public class Noticia {
         this.cuerpo = cuerpo;
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 }

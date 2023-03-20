@@ -129,7 +129,7 @@ public class Home extends AppCompatActivity {
                                 noticia.setTitulo(documentSnapshot.getData().get("Titulo").toString());
                                 noticia.setCuerpo(documentSnapshot.getData().get("Cuerpo").toString());
                                 noticia.setImagen(documentSnapshot.getData().get("Imagen").toString());
-
+                                noticia.setId(documentSnapshot.getId());
                                 noticiaList.add(noticia);
                             }
 
