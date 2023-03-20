@@ -22,20 +22,16 @@ import com.dam2.m08.proyectocsmaresme.juegos.Games;
 import com.dam2.m08.proyectocsmaresme.R;
 import com.dam2.m08.proyectocsmaresme.settings.Setting;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class Home extends AppCompatActivity {
@@ -64,7 +60,7 @@ public class Home extends AppCompatActivity {
         SharedPreferences.Editor editor = prefer.edit();
         editor.putString("usuario_email", usuario_email);
         editor.apply();
-        floatingActionButton = findViewById(R.id.floatingButtonId);
+        floatingActionButton = findViewById(R.id.add_comentario_chatanonimo);
         System.out.println("--->>>" + rol + usuario_email);
         if (Objects.equals(rol, "Administrador")){
             floatingActionButton.setVisibility(View.VISIBLE);

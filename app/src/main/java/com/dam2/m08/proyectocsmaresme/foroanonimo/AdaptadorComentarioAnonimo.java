@@ -91,9 +91,9 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
         public AdaptadorComentarioAnonimoHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvTitulo = itemView.findViewById(R.id.cvTitulo);
+            tvTitulo = itemView.findViewById(R.id.edtxt_Titulo);
             tvNombre = itemView.findViewById(R.id.cvNombre);
-            tvContenido = itemView.findViewById(R.id.cvContenido);
+            tvContenido = itemView.findViewById(R.id.edtxt_Contenido);
             tvFecha = itemView.findViewById(R.id.cvFecha);
             imageUser = itemView.findViewById(R.id.imageUser);
             btn_menu_comentario = itemView.findViewById(R.id.btn_menu_comentario);
@@ -105,7 +105,7 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
             tvNombre.setText(""+lista.get(i).getNombre());
             tvContenido.setText(""+lista.get(i).getContenido());
             tvFecha.setText(""+lista.get(i).getFecha());
-//            tvNombreCategoria.setText(""+lista.get(i).getNombreCategoria());
+            tvNombreCategoria.setText(""+lista.get(i).getCategoria());
         }
     }
 }

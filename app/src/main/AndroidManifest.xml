@@ -117,7 +117,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".foroanonimo.AggComentario"
+            android:name=".foroanonimo.AddComentario"
             android:theme="@style/Theme.AppCompat.NoActionBar.TemaPopup"
             android:exported="false">
             <meta-data

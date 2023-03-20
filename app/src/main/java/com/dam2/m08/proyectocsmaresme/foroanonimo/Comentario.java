@@ -6,27 +6,30 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 public class Comentario implements Parcelable {
-    private int id;
+    private String id;
     private String nombre;
     private String titulo;
     private String contenido;
     private String fecha;
+    private String categoria;
 
-    public Comentario(int id, String nombre, String titulo, String contenido, String fecha) {
+    public Comentario(String id, String nombre, String titulo, String contenido, String fecha, String categoria) {
         this.id = id;
         this.nombre = nombre;
         this.titulo = titulo;
         this.contenido = contenido;
         this.fecha = fecha;
+        this.categoria = categoria;
     }
 
 
     protected Comentario(Parcel in) {
-        id = in.readInt();
+        id = in.readString();
         nombre = in.readString();
         titulo = in.readString();
         contenido = in.readString();
         fecha = in.readString();
+        categoria = in.readString();
     }
     public static final Creator<Comentario> CREATOR = new Creator<Comentario>() {
         @Override
@@ -41,7 +44,7 @@ public class Comentario implements Parcelable {
     };
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -61,14 +64,19 @@ public class Comentario implements Parcelable {
         return fecha;
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
+
     @Override
     public String toString() {
         return "Comentario{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", titulo='" + titulo + '\'' +
                 ", contenido='" + contenido + '\'' +
                 ", fecha='" + fecha + '\'' +
+                ", categoria='" + categoria + '\'' +
                 '}';
     }
 
@@ -79,10 +87,11 @@ public class Comentario implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeInt(id);
+        dest.writeString(id);
         dest.writeString(nombre);
         dest.writeString(titulo);
         dest.writeString(contenido);
         dest.writeString(fecha);
+        dest.writeString(categoria);
     }
 }

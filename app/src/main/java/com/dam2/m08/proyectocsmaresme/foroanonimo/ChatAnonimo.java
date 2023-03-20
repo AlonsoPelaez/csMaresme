@@ -86,11 +86,11 @@ public class ChatAnonimo extends AppCompatActivity {
 
 
         //btn_add_comentario
-        btn_add_comentario = findViewById(R.id.btn_add_comentario);
+        btn_add_comentario = findViewById(R.id.add_comentario_chatanonimo);
         btn_add_comentario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AggComentario.class);
+                Intent intent = new Intent(getApplicationContext(), AddComentario.class);
                 startActivity(intent);
             }
         });
