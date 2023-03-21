@@ -8,7 +8,7 @@
     <string name="Contactanos">Contactans</string>
     //Chat Anonimo
     <string-array name="categorias_chatanonimo_spinner">
-        <item name="default" >Selecciona un tema</item>
+        <item name="default" >-</item>
         <item name="tema1" type="String">tema 1</item>
         <item name="tema2" type="String">tema 2</item>
         <item  name="tema3" type="String"> tema 3</item>

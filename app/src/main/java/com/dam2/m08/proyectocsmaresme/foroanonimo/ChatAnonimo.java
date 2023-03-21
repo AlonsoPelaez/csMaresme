@@ -144,7 +144,7 @@ public class ChatAnonimo extends AppCompatActivity {
                     String fecha = comentario.getString("fecha");
                     String categoria = comentario.getString("categoria");
                     listaComentarios.add(new Comentario(id,nombre,titulo,contenido,fecha,categoria));
-                    Log.d(TAG, "onSuccess: id"+id);
+                    Log.d(TAG, "onSuccess: id"+ id);
                     adaptadorComentarioAnonimo.notifyItemRangeChanged(listaComentarios.size(),10);
                 }
             }

@@ -12,7 +12,7 @@
     <string name="formulario_add_comentario" translatable="false">Nuevo Comentario</string>
 
     <string-array name="categorias_chatanonimo_spinner">
-        <item name="default" >Elige una categoria</item>
+        <item name="default" >-</item>
         <item name="tema1" >tema 1</item>
         <item name="tema2" >tema 2</item>
         <item  name="tema3">tema 3</item>

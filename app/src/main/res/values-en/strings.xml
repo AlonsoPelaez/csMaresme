@@ -11,7 +11,7 @@
     /Chat Anonimo
     <string name="titulo_chatanonimo">Anonymous Chat</string>
     <string-array name="categorias_chatanonimo_spinner">
-        <item name="default" >Choose a Theme</item>
+        <item name="default" >-</item>
         <item name="tema1" type="String">Theme 1</item>
         <item name="tema2" type="String">Theme 2</item>
         <item  name="tema3" type="String"> Theme 3</item>

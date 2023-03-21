@@ -51,19 +51,20 @@ public class AddComentario extends AppCompatActivity {
 
         btn_aceptar = findViewById(R.id.btn_aceptar_formulario_add_comentario);
         btn_cancelar = findViewById(R.id.btn_cancelar_formulario_add_comentario);
+
         btn_aceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean agregadoCorrecto = false;
                 if (!titulo.getText().equals("") || !contenido.getText().equals("")){
                     String time = new SimpleDateFormat("HH:mm dd/MM/yyyy").format(new Date());
 
                     HashMap map = new HashMap();
                     map.put("categoria",idCategoria);
-                    map.put("titulo",titulo.getText());
-                    map.put("contenido",contenido.getText());
+                    map.put("titulo",titulo.getText().toString());
+                    map.put("contenido",contenido.getText().toString());
                     map.put("nombre", "Anonimo");
                     map.put("fecha", time);
-
 
                     db.collection("Comentarios").document().set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -71,9 +72,8 @@ public class AddComentario extends AppCompatActivity {
                             if (task.isSuccessful()){
                                 Intent intent = new Intent(getApplicationContext(), ChatAnonimo.class);
                                 startActivity(intent);
-                            }
-                            else {
-                                Log.d(TAG, "error: "+ task.getException().getMessage());
+                            }else{
+                                Log.d(TAG, "HA OCURRIDO UN ERROR ");
                             }
                         }
                     });
@@ -94,7 +94,7 @@ public class AddComentario extends AppCompatActivity {
         int ancho = displayMetrics.widthPixels;
         int alto = displayMetrics.heightPixels;
 
-        getWindow().setLayout((int) (ancho * 0.85), (int)(alto * 0.80));
+        getWindow().setLayout((int) (ancho * 0.85), (int)(alto * 0.70));
 
 
 
