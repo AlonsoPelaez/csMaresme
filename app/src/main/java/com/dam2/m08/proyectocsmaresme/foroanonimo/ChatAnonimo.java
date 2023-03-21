@@ -3,6 +3,7 @@ package com.dam2.m08.proyectocsmaresme.foroanonimo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -134,12 +135,14 @@ public class ChatAnonimo extends AppCompatActivity {
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for (DocumentSnapshot comentario: queryDocumentSnapshots) {
 
-                    int id = Integer.parseInt(comentario.getString("id"));
+                    String id = comentario.getId();
                     String nombre = comentario.getString("nombre");
                     String titulo = comentario.getString("titulo");
                     String contenido = comentario.getString("contenido");
                     String fecha = comentario.getString("fecha");
-                    listaComentarios.add(new Comentario(id,nombre,titulo,contenido,fecha));
+                    String categoria = comentario.getString("categoria");
+                    listaComentarios.add(new Comentario(id,nombre,titulo,contenido,fecha,categoria));
+                    Log.d(TAG, "onSuccess: id"+id);
                     adaptadorComentarioAnonimo.notifyItemRangeChanged(listaComentarios.size(),10);
                 }
             }
