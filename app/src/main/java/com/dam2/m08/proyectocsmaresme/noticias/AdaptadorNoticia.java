@@ -1,7 +1,6 @@
 package com.dam2.m08.proyectocsmaresme.noticias;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,23 +15,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.dam2.m08.proyectocsmaresme.R;
-import com.google.android.gms.common.api.Api;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 
-public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> {
+public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.MyViewHolder> {
 
     private Context context;
     private List<Noticia> noticiaList;
     private LayoutInflater layoutInflater;
-
-    public Adaptery(Context context, List<Noticia> noticiaList) {
+    private String rol;
+    public AdaptadorNoticia(Context context, List<Noticia> noticiaList, String rol) {
         this.context = context;
         this.noticiaList = noticiaList;
+        this.rol = rol;
     }
 
     @NonNull
@@ -53,6 +52,11 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> {
         holder.titulo.setText(noticiaList.get(position).getTitulo());
         holder.cuerpo.setText(noticiaList.get(position).getCuerpo());
         Glide.with(holder.foto).load(noticia.getImagen()).into(holder.foto);
+        if (Objects.equals(rol, "Administrador")){
+            holder.menu.setVisibility(View.VISIBLE);
+        } else {
+            holder.menu.setVisibility(View.INVISIBLE);
+        }
         holder.menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

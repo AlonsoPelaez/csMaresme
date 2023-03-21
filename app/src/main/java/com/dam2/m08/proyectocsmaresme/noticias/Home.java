@@ -40,7 +40,7 @@ public class Home extends AppCompatActivity {
     private List<Noticia> noticiaList;
     private RecyclerView recyclerView;
     private FloatingActionButton floatingActionButton;
-
+    private String rol;
     @SuppressLint("MissingInflatedId")
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +53,7 @@ public class Home extends AppCompatActivity {
         //        recoge el email del usuario y lo mete en el sharedpreferences
         Intent intent = getIntent();
         String usuario_email = intent.getStringExtra("usuario_email");
-        String rol = intent.getStringExtra("rol");
+        rol = intent.getStringExtra("Rol");
         Log.d(TAG, "onCreate: " + usuario_email);
 
         SharedPreferences prefer = getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
@@ -73,6 +73,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent1 = new Intent(getApplicationContext(), AddNoticia.class);
+                intent1.putExtra("Rol",rol);
                 startActivity(intent1);
             }
         });
@@ -88,24 +89,23 @@ public class Home extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 switch (item.getItemId()) {
-
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), Home.class));
+                        startActivity(new Intent(getApplicationContext(), Home.class).putExtra("Rol", rol));
                         finish();
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.games:
-                        startActivity(new Intent(getApplicationContext(), Games.class));
+                        startActivity(new Intent(getApplicationContext(), Games.class).putExtra("Rol", rol));
                         finish();
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.chat:
-                        startActivity(new Intent(getApplicationContext(), ChatAnonimo.class));
+                        startActivity(new Intent(getApplicationContext(), ChatAnonimo.class).putExtra("Rol", rol));
                         finish();
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.setting:
-                        startActivity(new Intent(getApplicationContext(), Setting.class));
+                        startActivity(new Intent(getApplicationContext(), Setting.class).putExtra("Rol", rol));
                         overridePendingTransition(0, 0);
                         return true;
 
@@ -141,7 +141,7 @@ public class Home extends AppCompatActivity {
 
 
     private void putDataIntoReciclerView(List<Noticia> noticiaList) {
-        Adaptery adaptery = new Adaptery(this, noticiaList);
+        AdaptadorNoticia adaptery = new AdaptadorNoticia(this, noticiaList, rol);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptery);
     }

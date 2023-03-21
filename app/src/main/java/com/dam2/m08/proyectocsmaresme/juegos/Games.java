@@ -16,11 +16,13 @@ import com.dam2.m08.proyectocsmaresme.noticias.Home;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Games extends AppCompatActivity {
+    private String rol;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.games);
-
+        Intent intent = getIntent();
+        rol = intent.getStringExtra("Rol");
         Toast.makeText(this, "GAMES", Toast.LENGTH_SHORT).show();
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.navView);
@@ -35,22 +37,22 @@ public class Games extends AppCompatActivity {
                 switch(item.getItemId())
                 {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), Home.class));
+                        startActivity(new Intent(getApplicationContext(), Home.class).putExtra("Rol", rol));
                         finish();
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.games:
-                        startActivity(new Intent(getApplicationContext(),Games.class));
+                        startActivity(new Intent(getApplicationContext(),Games.class).putExtra("Rol", rol));
                         finish();
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.chat:
-                        startActivity(new Intent(getApplicationContext(), ChatAnonimo.class));
+                        startActivity(new Intent(getApplicationContext(), ChatAnonimo.class).putExtra("Rol", rol));
                         finish();
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.setting:
-                        startActivity(new Intent(getApplicationContext(), Setting.class));
+                        startActivity(new Intent(getApplicationContext(), Setting.class).putExtra("Rol", rol));
                         overridePendingTransition(0,0);
 
                 }

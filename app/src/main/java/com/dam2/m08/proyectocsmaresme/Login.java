@@ -121,7 +121,7 @@ public class Login extends AppCompatActivity {
     public void showHome(String rol){
         Intent intent = new Intent(getApplicationContext(), Home.class);
         intent.putExtra("usuario_email", usuario_login.getText().toString());
-        intent.putExtra("rol", rol);
+        intent.putExtra("Rol", rol);
         startActivity(intent);
     }
 

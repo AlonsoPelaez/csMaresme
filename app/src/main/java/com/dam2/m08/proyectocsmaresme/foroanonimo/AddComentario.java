@@ -39,11 +39,13 @@ public class AddComentario extends AppCompatActivity {
     private String idCategoria;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final String TAG ="CS_MARESME_CHATANONIMO";
+    private String rol;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addcomentario);
-
+        Intent intent = getIntent();
+        rol = intent.getStringExtra("Rol");
         titulo = findViewById(R.id.edtxt_Titulo);
         contenido = findViewById(R.id.edtxt_Contenido);
 
