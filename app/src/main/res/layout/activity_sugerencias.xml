@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3A3276"
     tools:context=".settings.Sugerencias">
 
     <EditText
@@ -36,6 +37,7 @@
         android:id="@+id/SendButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#4E468E"
         android:text="@string/Enviar"
         app:layout_constraintEnd_toEndOf="@+id/editTextSugerencias"
         app:layout_constraintStart_toStartOf="@+id/editTextSugerencias"
