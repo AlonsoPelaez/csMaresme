@@ -32,15 +32,11 @@ public class Setting extends AppCompatActivity {
     private Button buttonreport;
     private Button rateus;
     private Button contactusbutton;
-    private String rol;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting);
-        Intent intent = getIntent();
-        rol = intent.getStringExtra("Rol");
-
         Toast.makeText(this, "SETTING", Toast.LENGTH_SHORT).show();
 
 
@@ -88,6 +84,11 @@ public class Setting extends AppCompatActivity {
                 editor.clear();
                 editor.apply();
 
+                SharedPreferences sharedPreferences = getSharedPreferences("Rol",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor1 = sharedPreferences.edit();
+                editor1.clear();
+                editor1.apply();
+
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
@@ -107,22 +108,22 @@ public class Setting extends AppCompatActivity {
                 switch(item.getItemId())
                 {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), Home.class).putExtra("Rol", rol));
+                        startActivity(new Intent(getApplicationContext(), Home.class));
                         finish();
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.games:
-                        startActivity(new Intent(getApplicationContext(), Games.class).putExtra("Rol", rol));
+                        startActivity(new Intent(getApplicationContext(), Games.class));
                         finish();
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.chat:
-                        startActivity(new Intent(getApplicationContext(), ChatAnonimo.class).putExtra("Rol", rol));
+                        startActivity(new Intent(getApplicationContext(), ChatAnonimo.class));
                         finish();
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.setting:
-                        startActivity(new Intent(getApplicationContext(), Setting.class).putExtra("Rol", rol));
+                        startActivity(new Intent(getApplicationContext(), Setting.class));
                         overridePendingTransition(0,0);
 
                 }

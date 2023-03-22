@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">Consorci Del Maresme</string>
     <string name="prefer_file" translatable="false">com.dam2.m08.proyectocsmaresme.Reference_File</string>
+    <string name="rol" translatable="false">com.dam2.m08.proyectocsmaresme.Rol</string>
     //Settings
     <string name="Configuracion">Configuracion</string>
     <string name="CerrarSesion">Cerrar Sesión</string>

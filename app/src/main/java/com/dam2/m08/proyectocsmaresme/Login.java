@@ -68,8 +68,6 @@ public class Login extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-
-
                                     db.collection("Usuarios").document(usuario_login.getText().toString()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                         @Override
                                         public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -119,14 +117,18 @@ public class Login extends AppCompatActivity {
     //metodo de inicio de sesion automatico
 
     public void showHome(String rol){
+        SharedPreferences sharedPreferences = getSharedPreferences("Rol",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("Rol", rol);
+        editor.apply();
         Intent intent = new Intent(getApplicationContext(), Home.class);
         intent.putExtra("usuario_email", usuario_login.getText().toString());
-        intent.putExtra("Rol", rol);
         startActivity(intent);
+        finish();
     }
 
     private void showError(String mensaje){
-        AlertDialog.Builder alert= new AlertDialog.Builder(getApplicationContext());
+        AlertDialog.Builder alert= new AlertDialog.Builder(this);
         alert.setTitle("Error");
         alert.setMessage(mensaje);
         alert.setCancelable(false);

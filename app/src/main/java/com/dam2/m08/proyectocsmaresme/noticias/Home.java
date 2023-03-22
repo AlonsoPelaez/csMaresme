@@ -53,7 +53,9 @@ public class Home extends AppCompatActivity {
         //        recoge el email del usuario y lo mete en el sharedpreferences
         Intent intent = getIntent();
         String usuario_email = intent.getStringExtra("usuario_email");
-        rol = intent.getStringExtra("Rol");
+        SharedPreferences sharedPreferences = getSharedPreferences("Rol", Context.MODE_PRIVATE);
+        rol = sharedPreferences.getString("Rol", "");
+        System.out.println("Esto es el rol--> "+rol);
         Log.d(TAG, "onCreate: " + usuario_email);
 
         SharedPreferences prefer = getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
@@ -73,7 +75,6 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent1 = new Intent(getApplicationContext(), AddNoticia.class);
-                intent1.putExtra("Rol",rol);
                 startActivity(intent1);
             }
         });
@@ -90,22 +91,23 @@ public class Home extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), Home.class).putExtra("Rol", rol));
+                        startActivity(new Intent(getApplicationContext(), Home.class));
                         finish();
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.games:
-                        startActivity(new Intent(getApplicationContext(), Games.class).putExtra("Rol", rol));
+                        startActivity(new Intent(getApplicationContext(), Games.class));
                         finish();
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.chat:
-                        startActivity(new Intent(getApplicationContext(), ChatAnonimo.class).putExtra("Rol", rol));
+                        startActivity(new Intent(getApplicationContext(), ChatAnonimo.class));
                         finish();
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.setting:
-                        startActivity(new Intent(getApplicationContext(), Setting.class).putExtra("Rol", rol));
+                        startActivity(new Intent(getApplicationContext(), Setting.class));
+                        finish();
                         overridePendingTransition(0, 0);
                         return true;
 

@@ -42,13 +42,10 @@ public class ChatAnonimo extends AppCompatActivity {
     private ImageView btn_add_comentario;
     private AdaptadorComentarioAnonimo adaptadorComentarioAnonimo;
     public static List<Comentario> listaComentarios;
-    private String rol;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatanonimo);
-        Intent intent = getIntent();
-        rol = intent.getStringExtra("Rol");
 
         Toast.makeText(this, "CHAT", Toast.LENGTH_SHORT).show();
 
@@ -93,7 +90,6 @@ public class ChatAnonimo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddComentario.class);
-                intent.putExtra("Rol", rol);
                 startActivity(intent);
             }
         });
@@ -106,22 +102,22 @@ public class ChatAnonimo extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), Home.class).putExtra("Rol", rol));
+                        startActivity(new Intent(getApplicationContext(), Home.class));
                         finish();
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.games:
-                        startActivity(new Intent(getApplicationContext(), Games.class).putExtra("Rol", rol));
+                        startActivity(new Intent(getApplicationContext(), Games.class));
                         finish();
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.chat:
-                        startActivity(new Intent(getApplicationContext(), ChatAnonimo.class).putExtra("Rol", rol));
+                        startActivity(new Intent(getApplicationContext(), ChatAnonimo.class));
                         finish();
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.setting:
-                        startActivity(new Intent(getApplicationContext(), Setting.class).putExtra("Rol", rol));
+                        startActivity(new Intent(getApplicationContext(), Setting.class));
                         overridePendingTransition(0, 0);
                 }
                 return false;

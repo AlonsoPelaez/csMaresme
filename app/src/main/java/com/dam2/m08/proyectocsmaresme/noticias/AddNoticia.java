@@ -41,7 +41,6 @@ public class AddNoticia extends AppCompatActivity {
     private String titulo;
     private String cuerpo;
     private ImageView imageView;
-    private String rol;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,8 +54,6 @@ public class AddNoticia extends AppCompatActivity {
         progressBar.setVisibility(View.INVISIBLE);
         elegirFoto = findViewById(R.id.subirFotoAddNoticia);
         imageView = findViewById(R.id.volver);
-        Intent intent = getIntent();
-        rol =  intent.getStringExtra("Rol");
         elegirFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +71,7 @@ public class AddNoticia extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Home.class).putExtra("Rol", rol);
+                Intent intent = new Intent(getApplicationContext(), Home.class);
                 startActivity(intent);
                 finish();
             }
@@ -124,7 +121,7 @@ public class AddNoticia extends AppCompatActivity {
                                                 dname = dname + c;
                                             }
                                             db.collection("Noticias").document(dname).set(noticia);
-                                            startActivity(new Intent(getApplicationContext(), Home.class).putExtra("Rol", rol));
+                                            startActivity(new Intent(getApplicationContext(), Home.class));
                                             finish();
                                         }
                                     }
