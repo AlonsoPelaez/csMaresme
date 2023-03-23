@@ -77,6 +77,17 @@ public class ChatAnonimo extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getApplicationContext(),"se ha selecionado el item de "+parent.getSelectedItem() ,Toast.LENGTH_SHORT).show();
+                List<Comentario> comentarioList = new ArrayList<>();
+                for (Comentario comentario: listaComentarios) {
+                    if (comentario.getCategoria().equals(parent.getSelectedItem())){
+                        comentarioList.add(comentario);
+                    }else {
+                        Toast.makeText(getApplicationContext(),"No se ha encontrado elementos disponibles",Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+                AdaptadorComentarioAnonimo adaptadorComentarioAnonimo = new AdaptadorComentarioAnonimo(getApplicationContext(), comentarioList);
+                rvComentario.setAdapter(adaptadorComentarioAnonimo);
             }
 
             @Override
@@ -142,7 +153,6 @@ public class ChatAnonimo extends AppCompatActivity {
                     String fecha = comentario.getString("fecha");
                     String categoria = comentario.getString("categoria");
                     listaComentarios.add(new Comentario(id,nombre,titulo,contenido,fecha,categoria));
-                    Log.d(TAG, "onSuccess: id"+ id);
                     adaptadorComentarioAnonimo.notifyItemRangeChanged(listaComentarios.size(),10);
                 }
             }

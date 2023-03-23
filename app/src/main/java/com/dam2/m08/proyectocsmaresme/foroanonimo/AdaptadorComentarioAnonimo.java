@@ -94,9 +94,6 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
         holder.btn_menu_comentario.setImageDrawable(layoutInflater.getContext().getDrawable(R.drawable.menu_comentario_chatanonimo_2));
         holder.imageUser.setImageDrawable(layoutInflater.getContext().getDrawable(R.drawable.logo_app_consorcimaresme));
     }
-    private void actualizaComentarios(){
-
-    }
 
     @Override
     public int getItemCount() {
