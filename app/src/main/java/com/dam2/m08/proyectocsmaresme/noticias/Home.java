@@ -50,6 +50,7 @@ public class Home extends AppCompatActivity {
         noticiaList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
         Toast.makeText(this, "HOME", Toast.LENGTH_SHORT).show();
+
         //        recoge el email del usuario y lo mete en el sharedpreferences
         Intent intent = getIntent();
         String usuario_email = intent.getStringExtra("usuario_email");

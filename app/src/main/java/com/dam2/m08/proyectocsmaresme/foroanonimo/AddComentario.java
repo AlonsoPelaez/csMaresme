@@ -53,7 +53,6 @@ public class AddComentario extends AppCompatActivity {
         btn_aceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean agregadoCorrecto = false;
                 if (!titulo.getText().equals("") || !contenido.getText().equals("")){
                     String time = new SimpleDateFormat("HH:mm dd/MM/yyyy").format(new Date());
 
@@ -70,6 +69,7 @@ public class AddComentario extends AppCompatActivity {
                             if (task.isSuccessful()){
                                 Intent intent = new Intent(getApplicationContext(), ChatAnonimo.class);
                                 startActivity(intent);
+
                             }else{
                                 Log.d(TAG, "HA OCURRIDO UN ERROR ");
                             }

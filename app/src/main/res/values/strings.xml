@@ -13,10 +13,10 @@
     <string name="formulario_add_comentario" translatable="false">Nuevo Comentario</string>
 
     <string-array name="categorias_chatanonimo_spinner">
-        <item name="default" >-</item>
-        <item name="tema1" >tema 1</item>
-        <item name="tema2" >tema 2</item>
-        <item  name="tema3">tema 3</item>
+        <item name="otros" >Otros</item>
+        <item name="sexologia" >Sexologia</item>
+        <item name="psicologia" >Psicologia</item>
+        <item  name="medio ambiente">Medio Ambiente</item>
     </string-array>
     <string name="titulo_chatanonimo" >Chat Anonimo</string>
     <string name="Noticias">Noticias</string>

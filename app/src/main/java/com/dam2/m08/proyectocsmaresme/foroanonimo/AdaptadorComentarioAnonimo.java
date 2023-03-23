@@ -1,5 +1,6 @@
 package com.dam2.m08.proyectocsmaresme.foroanonimo;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam2.m08.proyectocsmaresme.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
@@ -23,6 +27,7 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
     private LayoutInflater layoutInflater;
     private List<Comentario> lista;
     private View.OnClickListener listener;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     public AdaptadorComentarioAnonimo(Context mContext, List<Comentario> listaCo){
         this.lista = listaCo;
         this.layoutInflater = LayoutInflater.from(mContext);
@@ -45,8 +50,10 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdaptadorComentarioAnonimoHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdaptadorComentarioAnonimoHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.imprimir(position);
+
+        Comentario comentario = lista.get(position);
 
         holder.btn_menu_comentario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,9 +66,21 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
                         switch (item.getItemId()){
                             case R.id.btn_editar_comentario:
                                 Toast.makeText(layoutInflater.getContext(), "ha pulsado el boton de editar comentario",Toast.LENGTH_SHORT).show();
+                                notifyItemChanged(holder.getLayoutPosition());
                                 return true;
                             case R.id.btn_eliminar_comentario:
-                                Toast.makeText(layoutInflater.getContext(), "ha pulsado el boton de eliminar comentario",Toast.LENGTH_SHORT).show();
+                                db.collection("Comentarios").document(comentario.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()){
+                                            Toast.makeText(layoutInflater.getContext(), "se ha eliminado el comentario",Toast.LENGTH_SHORT).show();
+                                            notifyItemRemoved(holder.getLayoutPosition());
+                                        }else {
+                                            Toast.makeText(layoutInflater.getContext(), "ha ocurrido un error: " + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    }
+                                });
                                 return true;
                             default:
                                 return false;
@@ -75,7 +94,9 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
         holder.btn_menu_comentario.setImageDrawable(layoutInflater.getContext().getDrawable(R.drawable.menu_comentario_chatanonimo_2));
         holder.imageUser.setImageDrawable(layoutInflater.getContext().getDrawable(R.drawable.logo_app_consorcimaresme));
     }
+    private void actualizaComentarios(){
 
+    }
 
     @Override
     public int getItemCount() {
