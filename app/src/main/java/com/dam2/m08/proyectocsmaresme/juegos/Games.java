@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.dam2.m08.proyectocsmaresme.foroanonimo.ChatAnonimo;
 import com.dam2.m08.proyectocsmaresme.R;
@@ -21,6 +22,7 @@ public class Games extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.games);
         Toast.makeText(this, "GAMES", Toast.LENGTH_SHORT).show();
+        getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azuloscurointerfaz));
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.navView);
 

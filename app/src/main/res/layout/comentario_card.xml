@@ -87,7 +87,9 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/menu_comentario_chatanonimo_2" />
+                    android:background="#673AB7"
+                    android:tint="#FFFFFF"
+                    app:srcCompat="@drawable/menu_comentario_chatanonimo" />
 
             </LinearLayout>
         </LinearLayout>

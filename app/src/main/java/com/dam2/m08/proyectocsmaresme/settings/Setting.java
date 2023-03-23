@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.dam2.m08.proyectocsmaresme.foroanonimo.ChatAnonimo;
 import com.dam2.m08.proyectocsmaresme.Login;
@@ -38,6 +39,7 @@ public class Setting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting);
         Toast.makeText(this, "SETTING", Toast.LENGTH_SHORT).show();
+        getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azuloscurointerfaz));
 
 
         sugerenciabutton = findViewById(R.id.button_sugerencia);
