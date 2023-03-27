@@ -52,8 +52,7 @@ public class ChatAnonimo extends AppCompatActivity {
         Toast.makeText(this, "CHAT", Toast.LENGTH_SHORT).show();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-//        cargaDatos();
-        setTitle("");
+
         listaComentarios = new ArrayList<>();
         rvComentario = findViewById(R.id.rv_comentarios);
 
@@ -73,17 +72,15 @@ public class ChatAnonimo extends AppCompatActivity {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(),"se ha selecionado el item de "+parent.getSelectedItem() ,Toast.LENGTH_SHORT).show();
+
                 List<Comentario> comentarioList = new ArrayList<>();
                 for (Comentario comentario: listaComentarios) {
-                    if (comentario.getCategoria().equals(parent.getSelectedItem())){
+                    if (comentario.getCategoria().equals(position)){
                         comentarioList.add(comentario);
-                    }else {
-                        Toast.makeText(getApplicationContext(),"No se ha encontrado elementos disponibles",Toast.LENGTH_SHORT).show();
-
                     }
                 }
                 AdaptadorComentarioAnonimo adaptadorComentarioAnonimo = new AdaptadorComentarioAnonimo(getApplicationContext(), comentarioList);
@@ -103,6 +100,7 @@ public class ChatAnonimo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddComentario.class);
+                intent.putExtra("modo_edicion",false);
                 startActivity(intent);
             }
         });
@@ -138,7 +136,6 @@ public class ChatAnonimo extends AppCompatActivity {
         });
 
     }
-
     private void cargaComentarios() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Comentarios").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -151,7 +148,7 @@ public class ChatAnonimo extends AppCompatActivity {
                     String titulo = comentario.getString("titulo");
                     String contenido = comentario.getString("contenido");
                     String fecha = comentario.getString("fecha");
-                    String categoria = comentario.getString("categoria");
+                    int categoria = Integer.parseInt(comentario.getString("categoria"));
                     listaComentarios.add(new Comentario(id,nombre,titulo,contenido,fecha,categoria));
                     adaptadorComentarioAnonimo.notifyItemRangeChanged(listaComentarios.size(),10);
                 }

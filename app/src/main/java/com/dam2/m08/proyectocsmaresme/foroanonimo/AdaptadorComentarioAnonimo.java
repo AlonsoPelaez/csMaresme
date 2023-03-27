@@ -2,6 +2,7 @@ package com.dam2.m08.proyectocsmaresme.foroanonimo;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -12,6 +13,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,11 +55,10 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
     public void onBindViewHolder(@NonNull AdaptadorComentarioAnonimoHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.imprimir(position);
 
-        Comentario comentario = lista.get(position);
-
         holder.btn_menu_comentario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 PopupMenu popupMenu = new PopupMenu(layoutInflater.getContext(), holder.btn_menu_comentario);
                 popupMenu.getMenuInflater().inflate(R.menu.menu_comentario, popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -65,22 +66,10 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.btn_editar_comentario:
-                                Toast.makeText(layoutInflater.getContext(), "ha pulsado el boton de editar comentario",Toast.LENGTH_SHORT).show();
-                                notifyItemChanged(holder.getLayoutPosition());
+                                editaComentario(v,position);
                                 return true;
                             case R.id.btn_eliminar_comentario:
-                                db.collection("Comentarios").document(comentario.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()){
-                                            Toast.makeText(layoutInflater.getContext(), "se ha eliminado el comentario",Toast.LENGTH_SHORT).show();
-                                            notifyItemRemoved(holder.getLayoutPosition());
-                                        }else {
-                                            Toast.makeText(layoutInflater.getContext(), "ha ocurrido un error: " + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-
-                                        }
-                                    }
-                                });
+                                eliminaComentario(position);
                                 return true;
                             default:
                                 return false;
@@ -93,6 +82,33 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
 
         holder.btn_menu_comentario.setImageDrawable(layoutInflater.getContext().getDrawable(R.drawable.menu_comentario_chatanonimo_2));
         holder.imageUser.setImageDrawable(layoutInflater.getContext().getDrawable(R.drawable.logo_app_consorcimaresme));
+    }
+
+    private void editaComentario(View v, int position) {
+        Comentario comentario = lista.get(position);
+        Intent intent= new Intent(v.getContext().getApplicationContext(), AddComentario.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("modo_edicion",true);
+        intent.putExtra("comentario",comentario);
+//        notifyItemChanged(position);
+        v.getContext().startActivity(intent);
+    }
+
+
+    public void eliminaComentario(int position) {
+        Comentario comentario = lista.get(position);
+        db.collection("Comentarios").document(comentario.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(layoutInflater.getContext(), "se ha eliminado el comentario",Toast.LENGTH_SHORT).show();
+                    lista.remove(position);
+                    notifyItemRemoved(position);
+                }else {
+                    Toast.makeText(layoutInflater.getContext(), "ha ocurrido un error: " + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override
@@ -116,7 +132,7 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
             tvFecha = itemView.findViewById(R.id.cvFecha);
             imageUser = itemView.findViewById(R.id.imageUser);
             btn_menu_comentario = itemView.findViewById(R.id.btn_menu_comentario);
-            tvNombreCategoria = itemView.findViewById(R.id.nombre_categoria);
+//            tvNombreCategoria = itemView.findViewById(R.id.nombre_categoria);
         }
         public void imprimir (int i){
 
@@ -124,7 +140,7 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
             tvNombre.setText(""+lista.get(i).getNombre());
             tvContenido.setText(""+lista.get(i).getContenido());
             tvFecha.setText(""+lista.get(i).getFecha());
-            tvNombreCategoria.setText(""+lista.get(i).getCategoria());
+//            tvNombreCategoria.setText(""+lista.get(i).getCategoria());
         }
     }
 }

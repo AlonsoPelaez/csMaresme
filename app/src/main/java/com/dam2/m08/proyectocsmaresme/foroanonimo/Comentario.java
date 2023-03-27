@@ -11,9 +11,9 @@ public class Comentario implements Parcelable {
     private String titulo;
     private String contenido;
     private String fecha;
-    private String categoria;
+    private int categoria;
 
-    public Comentario(String id, String nombre, String titulo, String contenido, String fecha, String categoria) {
+    public Comentario(String id, String nombre, String titulo, String contenido, String fecha, int categoria) {
         this.id = id;
         this.nombre = nombre;
         this.titulo = titulo;
@@ -29,7 +29,7 @@ public class Comentario implements Parcelable {
         titulo = in.readString();
         contenido = in.readString();
         fecha = in.readString();
-        categoria = in.readString();
+        categoria = in.readInt();
     }
     public static final Creator<Comentario> CREATOR = new Creator<Comentario>() {
         @Override
@@ -64,7 +64,7 @@ public class Comentario implements Parcelable {
         return fecha;
     }
 
-    public String getCategoria() {
+    public Integer getCategoria() {
         return categoria;
     }
 
@@ -92,6 +92,6 @@ public class Comentario implements Parcelable {
         dest.writeString(titulo);
         dest.writeString(contenido);
         dest.writeString(fecha);
-        dest.writeString(categoria);
+        dest.writeInt(categoria);
     }
 }
