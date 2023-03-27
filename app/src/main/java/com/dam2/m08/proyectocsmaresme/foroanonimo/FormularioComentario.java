@@ -18,19 +18,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam2.m08.proyectocsmaresme.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
-public class AddComentario extends AppCompatActivity {
+public class FormularioComentario extends AppCompatActivity {
     private Spinner spinner;
     private Button btn_aceptar;
     private Button btn_cancelar;
@@ -45,7 +40,7 @@ public class AddComentario extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.addcomentario);
+        setContentView(R.layout.formulariocomentario);
         titulo = findViewById(R.id.edtxt_Titulo);
         contenido = findViewById(R.id.edtxt_Contenido);
 

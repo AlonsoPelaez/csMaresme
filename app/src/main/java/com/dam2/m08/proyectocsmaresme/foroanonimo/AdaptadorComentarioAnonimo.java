@@ -3,7 +3,6 @@ package com.dam2.m08.proyectocsmaresme.foroanonimo;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -86,7 +84,7 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
 
     private void editaComentario(View v, int position) {
         Comentario comentario = lista.get(position);
-        Intent intent= new Intent(v.getContext().getApplicationContext(), AddComentario.class);
+        Intent intent= new Intent(v.getContext().getApplicationContext(), FormularioComentario.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("modo_edicion",true);
         intent.putExtra("comentario",comentario);
