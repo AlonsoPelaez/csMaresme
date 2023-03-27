@@ -41,72 +41,14 @@ public class FormularioComentario extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.formulariocomentario);
-        titulo = findViewById(R.id.edtxt_Titulo);
-        contenido = findViewById(R.id.edtxt_Contenido);
 
-        btn_aceptar = findViewById(R.id.btn_aceptar_formulario_add_comentario);
-        btn_cancelar = findViewById(R.id.btn_cancelar_formulario_add_comentario);
-        spinner = findViewById(R.id.spinner_filtro);
+        initUI();
+        configWindow();
+        configSpinner();
 
-        btn_aceptar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!titulo.getText().equals("") || !contenido.getText().equals("")){
-                    String time = new SimpleDateFormat("HH:mm dd/MM/yyyy").format(new Date());
+    }
 
-                    HashMap map = new HashMap();
-                    map.put("categoria",idCategoria+"");
-                    map.put("titulo",titulo.getText().toString());
-                    map.put("contenido",contenido.getText().toString());
-                    map.put("nombre", "Anonimo");
-                    map.put("fecha", time);
-
-                    db.collection("Comentarios").document().set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
-                                Intent intent = new Intent(getApplicationContext(), ChatAnonimo.class);
-                                startActivity(intent);
-
-                            }else{
-                                Log.d(TAG, "HA OCURRIDO UN ERROR ");
-                            }
-                        }
-                    });
-                }
-            }
-        });
-        btn_cancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ChatAnonimo.class);
-                startActivity(intent);
-            }
-        });
-
-        Intent intent = getIntent();
-        modo_edicion = intent.getExtras().getBoolean("modo_edicion");
-
-        if (modo_edicion) {
-            comentario = (Comentario) intent.getExtras().get("comentario");
-            titulo.setText(comentario.getTitulo());
-            contenido.setText(comentario.getContenido());
-            idCategoria= comentario.getCategoria();
-            Log.d(TAG, "spinner selection :"+ comentario.getCategoria());
-        }
-
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-
-        int ancho = displayMetrics.widthPixels;
-        int alto = displayMetrics.heightPixels;
-
-        getWindow().setLayout((int) (ancho * 0.85), (int)(alto * 0.70));
-
-
-
-
-        //spinner
+    private void configSpinner() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.categorias_chatanonimo_spinner , android.R.layout.simple_spinner_item);
 
@@ -117,12 +59,95 @@ public class FormularioComentario extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 idCategoria = position;
-                Toast.makeText(getApplicationContext(),"posicion "+ position + " "+ parent.getSelectedItem(),Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+    }
+
+    private void configWindow() {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        int ancho = displayMetrics.widthPixels;
+        int alto = displayMetrics.heightPixels;
+
+        getWindow().setLayout((int) (ancho * 0.85), (int)(alto * 0.70));
+    }
+
+    private void initUI() {
+        titulo = findViewById(R.id.edtxt_Titulo);
+        contenido = findViewById(R.id.edtxt_Contenido);
+
+        btn_aceptar = findViewById(R.id.btn_aceptar_formulario_add_comentario);
+        btn_cancelar = findViewById(R.id.btn_cancelar_formulario_add_comentario);
+        spinner = findViewById(R.id.spinner_filtro);
+
+
+        Intent intent = getIntent();
+        modo_edicion = intent.getExtras().getBoolean("modo_edicion");
+        if (modo_edicion) {
+            comentario = (Comentario) intent.getExtras().get("comentario");
+            titulo.setText(comentario.getTitulo());
+            contenido.setText(comentario.getContenido());
+            idCategoria= comentario.getCategoria();
+            Log.d(TAG, "spinner selection :"+ comentario.getCategoria());
+        }
+
+        btn_aceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!titulo.getText().equals("") || !contenido.getText().equals("")){
+                    String time = new SimpleDateFormat("HH:mm dd/MM/yyyy").format(new Date());
+                    HashMap map = new HashMap();
+                    if (modo_edicion){
+                        map.put("categoria",idCategoria+"");
+                        map.put("titulo",titulo.getText().toString());
+                        map.put("contenido",contenido.getText().toString());
+                        map.put("nombre", "Anonimo");
+                        map.put("fecha", time);
+                        db.collection("Comentarios").document(comentario.getId()).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()){
+                                    Intent intent = new Intent(getApplicationContext(), ChatAnonimo.class);
+                                    startActivity(intent);
+
+                                }else{
+                                    Log.d(TAG, "HA OCURRIDO UN ERROR ");
+                                }
+                            }
+                        });
+                    }else{
+                        map.put("categoria",idCategoria+"");
+                        map.put("titulo",titulo.getText().toString());
+                        map.put("contenido",contenido.getText().toString());
+                        map.put("nombre", "Anonimo");
+                        map.put("fecha", time);
+                        db.collection("Comentarios").document().set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()){
+                                    Intent intent = new Intent(getApplicationContext(), ChatAnonimo.class);
+                                    startActivity(intent);
+
+                                }else{
+                                    Log.d(TAG, "HA OCURRIDO UN ERROR ");
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+        });
+        btn_cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ChatAnonimo.class);
+                startActivity(intent);
             }
         });
     }
