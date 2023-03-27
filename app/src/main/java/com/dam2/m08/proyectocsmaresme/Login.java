@@ -34,6 +34,7 @@ public class Login extends AppCompatActivity {
 
     private EditText usuario_login;
     private EditText contraseña_login;
+    private TextView recuperaContraseña;
     private Button btn_login;
     private TextView enlaceRegistro;
     private final String TAG ="PROYECTO_CS_MARESME___LOGIN";
@@ -51,11 +52,13 @@ public class Login extends AppCompatActivity {
     }
     private void setup(){
 
+        recuperaContraseña = findViewById(R.id.recuperarContraseña);
         usuario_login = findViewById(R.id.usuario_login);
         contraseña_login = findViewById(R.id.contraseña_login);
         btn_login = findViewById(R.id.btn_login);
         enlaceRegistro = findViewById(R.id.enlaceRegistro);
         firebaseAuth = FirebaseAuth.getInstance();
+
 
 
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -107,11 +110,15 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        recuperaContraseña.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RecuperarContraseña.class);
+                startActivity(intent);
+            }
+        });
     }
-//    private void limpiaCampos(){
-//        usuario_login.setText("");
-//        contraseña_login.setText("");
-//    }
 
     //metodo de inicio de sesion automatico
 

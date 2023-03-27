@@ -70,6 +70,22 @@
         app:layout_constraintEnd_toEndOf="@+id/btn_login"
         app:layout_constraintStart_toStartOf="@+id/btn_login" />
 
+    <TextView
+        android:id="@+id/recuperarContraseña"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botonredondo"
+        android:padding="5dp"
+        android:text="@string/RecuperaPassword"
+        android:textColor="#FFFFFF"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/enlaceRegistro"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/enlaceRegistro"
+        app:layout_constraintTop_toBottomOf="@+id/enlaceRegistro"
+        app:layout_constraintVertical_bias="0.063" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="329dp"
