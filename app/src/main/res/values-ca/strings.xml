@@ -26,6 +26,8 @@
     <string name="IniciaSesion">Inicia Sessió</string>
     <string name="NuevaContraseña">Nova Contrasenya</string>
     <string name="Registrate">Registra\'t</string>
+    <string name="Register">Encara no tens cap compte? Registra\'t </string>
+
 
 
 </resources>

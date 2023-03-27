@@ -55,7 +55,6 @@ public class Login extends AppCompatActivity {
         contraseña_login = findViewById(R.id.contraseña_login);
         btn_login = findViewById(R.id.btn_login);
         enlaceRegistro = findViewById(R.id.enlaceRegistro);
-        enlaceRegistro.setText("¿Ya tienes una cuenta? Registrate");
         firebaseAuth = FirebaseAuth.getInstance();
 
 

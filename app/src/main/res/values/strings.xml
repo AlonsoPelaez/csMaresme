@@ -31,5 +31,6 @@
     <string name="IniciaSesion">Inicia Sesión</string>
     <string name="NuevaContraseña">Nueva Contraseña</string>
     <string name="Registrate">Registrate</string>
+    <string name="Register">¿Aún no tienes una cuenta? Regístrate </string>
 
 </resources>
