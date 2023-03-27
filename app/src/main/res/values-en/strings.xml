@@ -28,6 +28,8 @@
     <string name="NuevaContraseña">New Password</string>
     <string name="Registrate">Register</string>
     <string name="Register">Don\'t have an account yet? Register </string>
+    <string name="NuevoCorreo">New Email</string>
+
 
 
 </resources>

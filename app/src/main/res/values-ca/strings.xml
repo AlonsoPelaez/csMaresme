@@ -4,8 +4,8 @@
     <string name="CerrarSesion">Tancar Sessió</string>
     <string name="EnviarSugerencia">Enviar suggeriment</string>
     <string name="EnviarReporte">Enviar un informe d\'error</string>
-    <string name="Calificanos">Calificans</string>
-    <string name="Contactanos">Contactans</string>
+    <string name="Calificanos">Califica\'ns</string>
+    <string name="Contactanos">Contacta\'ns</string>
     //Chat Anonimo
     <string-array name="categorias_chatanonimo_spinner">
         <item name="other" >Others</item>
@@ -24,10 +24,10 @@
     <string name="EncasoOpinion">En cas de voler ser més específic, aquí també pots donar la teva opinió</string>
     <string name="Contraseña">Contrasenya</string>
     <string name="IniciaSesion">Inicia Sessió</string>
-    <string name="NuevaContraseña">Nova Contrasenya</string>
+    <string name="NuevaContraseña">Nova Contrassenya</string>
     <string name="Registrate">Registra\'t</string>
     <string name="Register">Encara no tens cap compte? Registra\'t </string>
-
+    <string name="NuevoCorreo">Nuevo Correu Electrònic</string>
 
 
 </resources>

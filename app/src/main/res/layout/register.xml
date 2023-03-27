@@ -22,7 +22,7 @@
         android:layout_height="48dp"
         android:background="@drawable/botonredondo"
         android:ems="10"
-        android:hint="Nuevo Correo Electrónico"
+        android:hint="@string/NuevoCorreo"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
