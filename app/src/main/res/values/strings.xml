@@ -32,7 +32,13 @@
     <string name="NuevaContraseña">Nueva Contraseña</string>
     <string name="Registrate">Registrate</string>
     <string name="Register">¿Aún no tienes una cuenta? Regístrate </string>
-    <string name="RecuperaPassword" translatable="false">¿Olvidaste Tu Contraseña?</string>
+    <string name="RecuperaPassword">¿Olvidaste Tu Contraseña?</string>
     <string name="NuevoCorreo">Nuevo Correo Electrónico</string>
+    <string name="Recuperar">Recuperar Constraseña </string>
+    <string name="Correo">Correo Electrónico</string>
+    <string name="AgregarNoticia">Agregar Noticia</string>
+    <string name="tnoticia">Titulo de la noticia</string>
+    <string name="cNoticia">Contenido de la noticia</string>
+    <string name="eFoto">Escoger foto</string>
 
 </resources>
