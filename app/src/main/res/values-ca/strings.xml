@@ -8,10 +8,10 @@
     <string name="Contactanos">Contacta\'ns</string>
     //Chat Anonimo
     <string-array name="categorias_chatanonimo_spinner">
-        <item name="other" >Others</item>
-        <item name="sexology" >Sexology</item>
-        <item name="psychology" >Psychology</item>
-        <item  name="environment" > Environment</item>
+        <item name="other" >Altres</item>
+        <item name="sexology" >Sexologia</item>
+        <item name="psychology" >Psicologia</item>
+        <item  name="environment" >Medi Ambient</item>
     </string-array>
     <string name="titulo_chatanonimo" >Xat Anònim</string>
     <string name="Noticias">Notícies</string>
@@ -27,7 +27,13 @@
     <string name="NuevaContraseña">Nova Contrassenya</string>
     <string name="Registrate">Registra\'t</string>
     <string name="Register">Encara no tens cap compte? Registra\'t </string>
-    <string name="NuevoCorreo">Nuevo Correu Electrònic</string>
-
+    <string name="RecuperaPassword">Has oblidat la teva contrassenya?</string>
+    <string name="NuevoCorreo">Nou Correu Electrònic</string>
+    <string name="Recuperar">Recuperar Constrassenya </string>
+    <string name="Correo">Correu Electrònic</string>
+    <string name="AgregarNoticia">Agregar Noticia</string>
+    <string name="tnoticia">Titol de la noticia</string>
+    <string name="cNoticia">Contingut de la noticia</string>
+    <string name="eFoto">Escolleix fotografia</string>
 
 </resources>

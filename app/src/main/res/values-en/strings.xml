@@ -11,10 +11,10 @@
     /Chat Anonimo
     <string name="titulo_chatanonimo">Anonymous Chat</string>
     <string-array name="categorias_chatanonimo_spinner">
-        <item name="default" >-</item>
-        <item name="tema1" type="String">Theme 1</item>
-        <item name="tema2" type="String">Theme 2</item>
-        <item  name="tema3" type="String"> Theme 3</item>
+        <item name="other" >Others</item>
+        <item name="sexology" >Sexologia</item>
+        <item name="psychology" >Psychology</item>
+        <item  name="environment" >Environment</item>
     </string-array>
     //Sugerencias
     <string name="InserteTexto">Insert Text</string>
@@ -28,8 +28,14 @@
     <string name="NuevaContraseña">New Password</string>
     <string name="Registrate">Register</string>
     <string name="Register">Don\'t have an account yet? Register </string>
+    <string name="RecuperaPassword">Forgot your password?</string>
     <string name="NuevoCorreo">New Email</string>
-
+    <string name="Recuperar">Recover your password </string>
+    <string name="Correo">Email</string>
+    <string name="AgregarNoticia">Add New</string>
+    <string name="tnoticia">Title</string>
+    <string name="cNoticia">Content</string>
+    <string name="eFoto">Select a Photo</string>
 
 
 </resources>
