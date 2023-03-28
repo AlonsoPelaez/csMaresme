@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3A3276">
+
+    <Button
+        android:id="@+id/subirButtonNoticia"
+        android:layout_width="139dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/boton_redondo_principal"
+        android:text="Agregar Noticia"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/subirFotoAddNoticia"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/addNoticiaTitulo"
+        android:layout_width="361dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="112dp"
+        android:background="@drawable/boton_redondo_principal"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="serif"
+        android:text="Titulo de la noticia"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/addNoticiaTitulo"
+        app:layout_constraintStart_toStartOf="@+id/addNoticiaTitulo" />
+
+    <EditText
+        android:id="@+id/addNoticiaContenido"
+        android:layout_width="361dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="112dp"
+        android:background="@drawable/boton_redondo_principal"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="serif"
+        android:text="Contenido de la noticia"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/addNoticiaContenido"
+        app:layout_constraintStart_toStartOf="@+id/addNoticiaContenido"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.975" />
+
+    <Button
+        android:id="@+id/subirFotoAddNoticia"
+        android:layout_width="139dp"
+        android:layout_height="46dp"
+        android:background="@drawable/boton_redondo_principal"
+        android:text="Elegir foto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addNoticiaContenido"
+        app:layout_constraintVertical_bias="0.312" />
+
+    <ProgressBar
+        android:id="@+id/progressBarAddNoticia"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="151dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/boton_redondo_principal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/subirFotoAddNoticia"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/volver"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
