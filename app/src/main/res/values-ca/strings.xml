@@ -10,7 +10,7 @@
     <string-array name="categorias_chatanonimo_spinner">
         <item name="other" >Altres</item>
         <item name="sexology" >Sexologia</item>
-        <item name="psychology" >Psichologia</item>
+        <item name="psychology" >Psicologia</item>
         <item  name="environment" >Medi Ambient</item>
     </string-array>
     <string name="titulo_chatanonimo" >Xat Anònim</string>

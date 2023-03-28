@@ -13,8 +13,8 @@
     <string-array name="categorias_chatanonimo_spinner">
         <item name="other" >Others</item>
         <item name="sexology" >Sexologia</item>
-        <item name="psychology" >Psichologia</item>
-        <item  name="environment" >Medi Ambient</item>
+        <item name="psychology" >Psychology</item>
+        <item  name="environment" >Environment</item>
     </string-array>
     //Sugerencias
     <string name="InserteTexto">Insert Text</string>
