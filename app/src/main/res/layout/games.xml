@@ -3,18 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GAMES"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="match_parent"
+    android:background="#3A3276">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navView"
@@ -24,7 +14,31 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu"
-        />
+        app:menu="@menu/menu" />
+
+    <LinearLayout
+        android:id="@+id/containerBrainTraining"
+        android:layout_width="408dp"
+        android:layout_height="30dp"
+        android:background="#4E468E"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/navView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.087"
+        tools:layout_editor_absoluteX="3dp">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="31dp"
+            android:layout_height="31dp"
+            app:srcCompat="@drawable/ic_baseline_question_mark_24" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:text="Brain Training"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,4 +41,25 @@
     <string name="cNoticia">Contenido de la noticia</string>
     <string name="eFoto">Escoger foto</string>
 
+
+
+
+    <string name="question" translatable="false">Question</string>
+    <string name="check" translatable="false">Check</string>
+    <string name="correct" translatable="false">Very good!</string>
+    <string name="incorrect" translatable="false">Incorrect...</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="finish" translatable="false">Finish</string>
+    <string name="prev" translatable="false">Previous</string>
+    <string name="results" translatable="false">Results</string>
+    <string name="start_over" translatable="false">Start Over</string>
+
+    <array name="all_questions">
+        <item>What is the capital of Bhutan?;Ouagadougou;Phnom Penh;*Thimphu;Zgighiti</item>
+        <item>Pregunta 2;a;*b;c;d</item>
+        <item>XXXXXXXXXXXXXXXXXXXXX;asdfg;qwerty;1234567;........</item>
+    </array>
+
+
+
 </resources>
