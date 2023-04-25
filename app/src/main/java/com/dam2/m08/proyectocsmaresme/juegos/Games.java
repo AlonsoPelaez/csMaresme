@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,13 +14,13 @@ import androidx.core.content.ContextCompat;
 
 import com.dam2.m08.proyectocsmaresme.foroanonimo.ChatAnonimo;
 import com.dam2.m08.proyectocsmaresme.R;
-import com.dam2.m08.proyectocsmaresme.juegos.preguntados.QuizActivity;
+import com.dam2.m08.proyectocsmaresme.juegos.preguntados.OptionQuiz;
 import com.dam2.m08.proyectocsmaresme.settings.Setting;
 import com.dam2.m08.proyectocsmaresme.noticias.Home;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Games extends AppCompatActivity {
-    private LinearLayout linearLayout;
+    private LinearLayout brainGameButton;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -31,12 +30,12 @@ public class Games extends AppCompatActivity {
         getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azuloscurointerfaz));
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.navView);
-        linearLayout = findViewById(R.id.containerBrainTraining);
+        brainGameButton = findViewById(R.id.containerBrainTraining);
 
-        linearLayout.setOnClickListener(new View.OnClickListener() {
+        brainGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), QuizActivity.class));
+                startActivity(new Intent(getApplicationContext(), OptionQuiz.class));
 
             }
         });

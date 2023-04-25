@@ -1,6 +1,7 @@
 package com.dam2.m08.proyectocsmaresme.juegos.preguntados;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam2.m08.proyectocsmaresme.R;
 
+import java.util.Objects;
+
 public class QuizActivity extends AppCompatActivity {
 
     public static final String CORRECT_ANSWER = "correct_answer";
@@ -24,7 +27,7 @@ public class QuizActivity extends AppCompatActivity {
     private int ids_answers[] = {
             R.id.answer1, R.id.answer2, R.id.answer3, R.id.answer4
     };
-    private String[] all_questions;
+    private String[] questions;
 
     private TextView text_question;
     private RadioGroup group;
@@ -69,13 +72,22 @@ public class QuizActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        Intent intent = getIntent();
+        String eleccion = intent.getStringExtra("election");
+
+        if (Objects.equals(eleccion, "history")){
+            questions = getResources().getStringArray(R.array.questions_history);
+        } else if (Objects.equals(eleccion, "science")){
+            questions = getResources().getStringArray(R.array.questions_science);
+        } else if (Objects.equals(eleccion, "art")){
+            questions = getResources().getStringArray(R.array.questions_art);
+        }
 
         text_question = (TextView) findViewById(R.id.text_question);
         group = (RadioGroup) findViewById(R.id.answer_group);
         btn_next = (Button) findViewById(R.id.btn_check);
         btn_prev = (Button) findViewById(R.id.btn_prev);
 
-        all_questions = getResources().getStringArray(R.array.all_questions);
 
         if (savedInstanceState == null) {
             startOver();
@@ -92,7 +104,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer();
-                if (current_question < all_questions.length-1) {
+                if (current_question < questions.length-1) {
                     current_question++;
                     showQuestion();
                 } else {
@@ -114,8 +126,8 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void startOver() {
-        answer_is_correct = new boolean[all_questions.length];
-        answer = new int[all_questions.length];
+        answer_is_correct = new boolean[questions.length];
+        answer = new int[questions.length];
         for (int i = 0; i < answer.length; i++) {
             answer[i] = -1;
         }
@@ -125,7 +137,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private void checkResults() {
         int correctas = 0, incorrectas = 0, nocontestadas = 0;
-        for (int i = 0; i < all_questions.length; i++) {
+        for (int i = 0; i < questions.length; i++) {
             if (answer_is_correct[i]) correctas++;
             else if (answer[i] == -1) nocontestadas++;
             else incorrectas++;
@@ -168,7 +180,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void showQuestion() {
-        String q = all_questions[current_question];
+        String q = questions[current_question];
         String[] parts = q.split(";");
 
         group.clearCheck();
@@ -191,7 +203,7 @@ public class QuizActivity extends AppCompatActivity {
         } else {
             btn_prev.setVisibility(View.VISIBLE);
         }
-        if (current_question == all_questions.length-1) {
+        if (current_question == questions.length-1) {
             btn_next.setText(R.string.finish);
         } else {
             btn_next.setText(R.string.next);

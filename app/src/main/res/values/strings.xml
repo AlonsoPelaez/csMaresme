@@ -54,12 +54,22 @@
     <string name="results" translatable="false">Results</string>
     <string name="start_over" translatable="false">Start Over</string>
 
-    <array name="all_questions">
-        <item>What is the capital of Bhutan?;Ouagadougou;Phnom Penh;*Thimphu;Zgighiti</item>
+    <array name="questions_history">
+        <item>¿En que año se lanzo el primer IPhone?;29 de Julio de 2007;*29 de Junio de 2007;25 de Noviembre de 2008;Ninguna de las anteriores</item>
         <item>Pregunta 2;a;*b;c;d</item>
         <item>XXXXXXXXXXXXXXXXXXXXX;asdfg;qwerty;1234567;........</item>
     </array>
 
+    <array name="questions_science">
+        <item>¿Cual es el compuesto quimico del agua?;*H²O;HO²;HO;Ninguna de las anteriores</item>
+        <item>Pregunta 2;a;*b;c;d</item>
+        <item>XXXXXXXXXXXXXXXXXXXXX;asdfg;qwerty;1234567;........</item>
+    </array>
 
+    <array name="questions_art">
+        <item>¿En que año nacio Leonardo da Vinci?;*15 de Abril de 1452;15 de Junio de 1454;23 de Agosto de 1912;Ninguna de las anteriores</item>
+        <item>Pregunta 2;a;*b;c;d</item>
+        <item>XXXXXXXXXXXXXXXXXXXXX;asdfg;qwerty;1234567;........</item>
+    </array>
 
 </resources>
