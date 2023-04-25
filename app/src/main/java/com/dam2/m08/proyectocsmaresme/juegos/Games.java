@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat;
 
 import com.dam2.m08.proyectocsmaresme.foroanonimo.ChatAnonimo;
 import com.dam2.m08.proyectocsmaresme.R;
+import com.dam2.m08.proyectocsmaresme.juegos.minesweeper.MineSweeperActivity;
 import com.dam2.m08.proyectocsmaresme.juegos.preguntados.OptionQuiz;
 import com.dam2.m08.proyectocsmaresme.settings.Setting;
 import com.dam2.m08.proyectocsmaresme.noticias.Home;
@@ -21,7 +22,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Games extends AppCompatActivity {
     private LinearLayout brainGameButton;
-
+    private LinearLayout mineGameButton;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +41,15 @@ public class Games extends AppCompatActivity {
             }
         });
 
+        mineGameButton = findViewById(R.id.containerMinesweeper);
+
+        mineGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), MineSweeperActivity.class));
+
+            }
+        });
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.games);
 

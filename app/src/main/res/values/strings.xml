@@ -42,6 +42,11 @@
     <string name="eFoto">Escoger foto</string>
 
 
+        <string name="smiley" translatable="false">😃</string>
+        <string name="flag" translatable="false">🚩</string>
+        <string name="bomb" translatable="false">💣</string>
+        <string name="default_count" translatable="false">000</string>
+
 
 
     <string name="question" translatable="false">Question</string>

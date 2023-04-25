@@ -41,4 +41,26 @@
             android:textSize="20sp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/containerMinesweeper"
+        android:layout_width="408dp"
+        android:layout_height="30dp"
+        android:background="#4E468E"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/containerBrainTraining">
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            app:srcCompat="@drawable/ic_baseline_question_mark_24" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:text="Minesweeper"
+            android:textSize="20sp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
