@@ -77,6 +77,13 @@
         <activity android:name=".juegos.preguntados.QuizActivity"
             android:exported="false">
         </activity>
+
+        <!--Importante, si van agregar una clase nueva, haganlo de la manera que se ve arriba
+        Si no, la aplicacion generara mas iconos de los que necesitamos y no tiene que ser asi.
+
+        android:name="nombre de la clase que se va a agregar"
+        android:exported="false"
+        -->
     </application>
 
 </manifest>
