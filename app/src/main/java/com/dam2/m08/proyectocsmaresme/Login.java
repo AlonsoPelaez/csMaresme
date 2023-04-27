@@ -127,9 +127,9 @@ public class Login extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("Rol",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("Rol", rol);
+        editor.putString("usuario_email",usuario_login.getText().toString());
         editor.apply();
         Intent intent = new Intent(getApplicationContext(), Home.class);
-        intent.putExtra("usuario_email", usuario_login.getText().toString());
         startActivity(intent);
         finish();
     }

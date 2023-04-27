@@ -1,6 +1,8 @@
 package com.dam2.m08.proyectocsmaresme.foroanonimo;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -20,6 +22,9 @@ import com.dam2.m08.proyectocsmaresme.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.theokanning.openai.OpenAiService;
+import com.theokanning.openai.completion.CompletionRequest;
+import com.theokanning.openai.completion.CompletionResult;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,6 +41,8 @@ public class FormularioComentario extends AppCompatActivity {
     private final String TAG ="CS_MARESME_CHATANONIMO";
     private boolean modo_edicion;
     private Comentario comentario;
+    private final String token ="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";
+    private OpenAiService service = new OpenAiService(token);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,6 +66,7 @@ public class FormularioComentario extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 idCategoria = position;
+
             }
 
             @Override
@@ -94,46 +102,90 @@ public class FormularioComentario extends AppCompatActivity {
             titulo.setText(comentario.getTitulo());
             contenido.setText(comentario.getContenido());
             idCategoria= comentario.getCategoria();
-            Log.d(TAG, "spinner selection :"+ comentario.getCategoria());
         }
 
         btn_aceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!titulo.getText().equals("") || !contenido.getText().equals("")){
+                    SharedPreferences prefer= getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
+                    
+//                    filtraPalabrasNegativas(titulo + " "+ contenido);
                     String time = new SimpleDateFormat("HH:mm dd/MM/yyyy").format(new Date());
                     HashMap map = new HashMap();
+                    map.put("categoria",idCategoria+"");
+                    map.put("titulo",titulo.getText().toString());
+                    map.put("contenido",contenido.getText().toString());
+                    map.put("nombre", "Anonimo");
+                    map.put("fecha", time);
                     if (modo_edicion){
-                        map.put("categoria",idCategoria+"");
-                        map.put("titulo",titulo.getText().toString());
-                        map.put("contenido",contenido.getText().toString());
-                        map.put("nombre", "Anonimo");
-                        map.put("fecha", time);
                         db.collection("Comentarios").document(comentario.getId()).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
-                                    Intent intent = new Intent(getApplicationContext(), ChatAnonimo.class);
-                                    startActivity(intent);
+                                    filtraPalabrasNegativas();
+                                    /** new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            String texto = titulo.getText().toString() + " "+ contenido.getText().toString();                                            String filtro= "quiero que filtres por palabras negativas o que se puedan malinterpretas hacia mal" +
+                                                    "el siguiente texto y me respondas si contiene palabras con la caracteristicas descrita anteriormente" +
+                                                    "o no, solo si o no";
+                                            String peticion =filtro + " "+ texto;
 
+                                            CompletionRequest request = new CompletionRequest();
+                                            request.setModel("text-davinci-002");
+                                            request.setPrompt(peticion);
+                                            request.setMaxTokens(2);
+
+                                            CompletionResult completionResult = service.createCompletion(request);
+                                            String filteredText = completionResult.getChoices().get(0).getText();
+
+                                            if (filteredText.contains("Sí")) {
+                                                Log.d(TAG, "El texto contiene palabras prohibidas");
+                                            } else {
+                                                Log.d(TAG, "Texto permitido");
+                                                Intent intent = new Intent(getApplicationContext(), ChatAnonimo.class);
+                                                startActivity(intent);
+                                            }
+                                        }
+                                    }).start();*/
                                 }else{
                                     Log.d(TAG, "HA OCURRIDO UN ERROR ");
                                 }
                             }
                         });
-                    }else{
-                        map.put("categoria",idCategoria+"");
-                        map.put("titulo",titulo.getText().toString());
-                        map.put("contenido",contenido.getText().toString());
-                        map.put("nombre", "Anonimo");
-                        map.put("fecha", time);
+                    }
+                    else{
                         db.collection("Comentarios").document().set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
-                                    Intent intent = new Intent(getApplicationContext(), ChatAnonimo.class);
-                                    startActivity(intent);
+                                    filtraPalabrasNegativas();
+                                    /** new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            String texto = titulo.getText().toString() + " "+ contenido.getText().toString();                                            String filtro= "quiero que filtres por palabras negativas o que se puedan malinterpretas hacia mal" +
+                                                    "el siguiente texto y me respondas si contiene palabras con la caracteristicas descrita anteriormente" +
+                                                    "o no, solo si o no";
+                                            String peticion =filtro + " "+ texto;
 
+                                            CompletionRequest request = new CompletionRequest();
+                                            request.setModel("text-davinci-002");
+                                            request.setPrompt(peticion);
+                                            request.setMaxTokens(2);
+
+                                            CompletionResult completionResult = service.createCompletion(request);
+                                            String filteredText = completionResult.getChoices().get(0).getText();
+
+                                            if (filteredText.contains("Sí")) {
+                                                Log.d(TAG, "El texto contiene palabras prohibidas");
+                                            } else {
+                                                Log.d(TAG, "Texto permitido");
+                                                Intent intent = new Intent(getApplicationContext(), ChatAnonimo.class);
+                                                startActivity(intent);
+                                            }
+                                        }
+                                    }).start();*/
                                 }else{
                                     Log.d(TAG, "HA OCURRIDO UN ERROR ");
                                 }
@@ -146,9 +198,38 @@ public class FormularioComentario extends AppCompatActivity {
         btn_cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ChatAnonimo.class);
-                startActivity(intent);
+                finish();
             }
         });
+    }
+
+    private void filtraPalabrasNegativas() {
+/**        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String texto = titulo.getText().toString() + " "+ contenido.getText().toString();                                            String filtro= "quiero que filtres por palabras negativas o que se puedan malinterpretas hacia mal" +
+                        "el siguiente texto y me respondas si contiene palabras con la caracteristicas descrita anteriormente" +
+                        "o no, solo si o no";
+                String peticion =filtro + " "+ texto;
+
+                CompletionRequest request = new CompletionRequest();
+                request.setModel("text-davinci-002");
+                request.setPrompt(peticion);
+                request.setMaxTokens(2);
+                request.setN(3);
+
+//                CompletionResult completionResult = service.createCompletion(request);
+                Log.d(TAG, "run: "+ service.createCompletion(request).getChoices().get(0));
+//                String filteredText = completionResult.getChoices().get(0).getText();
+
+//                if (filteredText.contains("Sí")) {
+//                    Log.d(TAG, "El texto contiene palabras prohibidas");
+//                } else {
+//                    Log.d(TAG, "Texto permitido");
+//                    Intent intent = new Intent(getApplicationContext(), ChatAnonimo.class);
+//                    startActivity(intent);
+//                }
+            }
+        }).start();*/
     }
 }

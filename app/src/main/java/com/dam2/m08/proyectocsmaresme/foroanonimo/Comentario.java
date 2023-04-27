@@ -12,14 +12,16 @@ public class Comentario implements Parcelable {
     private String contenido;
     private String fecha;
     private int categoria;
+    private String email;
 
-    public Comentario(String id, String nombre, String titulo, String contenido, String fecha, int categoria) {
+    public Comentario(String id, String nombre, String titulo, String contenido, String fecha, int categoria,String email) {
         this.id = id;
         this.nombre = nombre;
         this.titulo = titulo;
         this.contenido = contenido;
         this.fecha = fecha;
         this.categoria = categoria;
+        this.email = email;
     }
 
 
@@ -30,6 +32,7 @@ public class Comentario implements Parcelable {
         contenido = in.readString();
         fecha = in.readString();
         categoria = in.readInt();
+        email = in.readString();
     }
     public static final Creator<Comentario> CREATOR = new Creator<Comentario>() {
         @Override
@@ -68,6 +71,10 @@ public class Comentario implements Parcelable {
         return categoria;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     @Override
     public String toString() {
         return "Comentario{" +
@@ -76,7 +83,8 @@ public class Comentario implements Parcelable {
                 ", titulo='" + titulo + '\'' +
                 ", contenido='" + contenido + '\'' +
                 ", fecha='" + fecha + '\'' +
-                ", categoria='" + categoria + '\'' +
+                ", categoria=" + categoria +
+                ", email='" + email + '\'' +
                 '}';
     }
 
@@ -93,5 +101,6 @@ public class Comentario implements Parcelable {
         dest.writeString(contenido);
         dest.writeString(fecha);
         dest.writeInt(categoria);
+        dest.writeString(email);
     }
 }
