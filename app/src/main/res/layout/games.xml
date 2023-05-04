@@ -54,7 +54,7 @@
             android:id="@+id/imageView6"
             android:layout_width="wrap_content"
             android:layout_height="31dp"
-            app:srcCompat="@drawable/ic_baseline_question_mark_24" />
+            app:srcCompat="@drawable/configuration" />
 
         <TextView
             android:id="@+id/textView8"
@@ -63,4 +63,14 @@
             android:text="Minesweeper"
             android:textSize="20sp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/GAMES"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Games"
+        app:layout_constraintBottom_toTopOf="@+id/containerBrainTraining"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
