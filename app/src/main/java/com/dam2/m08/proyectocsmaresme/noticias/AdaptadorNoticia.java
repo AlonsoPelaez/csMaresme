@@ -1,6 +1,8 @@
 package com.dam2.m08.proyectocsmaresme.noticias;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 
@@ -28,10 +31,12 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.MyVi
     private List<Noticia> noticiaList;
     private LayoutInflater layoutInflater;
     private String rol;
+    private static Locale defaultLocale;
     public AdaptadorNoticia(Context context, List<Noticia> noticiaList, String rol) {
         this.context = context;
         this.noticiaList = noticiaList;
         this.rol = rol;
+        obtenerIdioma();
     }
 
     @NonNull
@@ -92,6 +97,20 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.MyVi
 
 
         holder.menu.setImageDrawable((layoutInflater.getContext().getDrawable(R.drawable.menu_comentario_chatanonimo_2)));
+    }
+    public void obtenerIdioma(){
+
+        if (defaultLocale == null) defaultLocale = Locale.getDefault(); //backup default locale
+        String languageToLoad = Locale.getDefault().getDisplayLanguage();
+        if (languageToLoad.equals("default")) languageToLoad = defaultLocale.getLanguage();
+        Log.d("UsefulFunctions", "setLocale():" + languageToLoad);
+
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        Toast.makeText(context.getApplicationContext(), languageToLoad, Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
