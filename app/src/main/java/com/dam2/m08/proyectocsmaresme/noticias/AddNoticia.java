@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.dam2.m08.proyectocsmaresme.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -29,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class AddNoticia extends AppCompatActivity {
+public class    AddNoticia extends AppCompatActivity {
     private final static int GALLERY_REQ_CODE = 100;
     private Button enviarButton;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -54,6 +55,7 @@ public class AddNoticia extends AppCompatActivity {
         progressBar.setVisibility(View.INVISIBLE);
         elegirFoto = findViewById(R.id.subirFotoAddNoticia);
         imageView = findViewById(R.id.volver);
+        getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azuloscurointerfaz));
         elegirFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

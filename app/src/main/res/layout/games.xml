@@ -31,7 +31,7 @@
             android:id="@+id/imageView5"
             android:layout_width="31dp"
             android:layout_height="31dp"
-            app:srcCompat="@drawable/ic_baseline_question_mark_24" />
+            app:srcCompat="@drawable/ic_baseline_brightness_5_24" />
 
         <TextView
             android:id="@+id/textView7"
@@ -45,14 +45,15 @@
         android:id="@+id/containerMinesweeper"
         android:layout_width="408dp"
         android:layout_height="30dp"
+        android:layout_marginTop="20dp"
         android:background="#4E468E"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/containerBrainTraining">
+        app:layout_constraintTop_toBottomOf="@+id/containerBrainTraining"
+        tools:layout_editor_absoluteX="3dp">
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
+            android:layout_width="31dp"
             android:layout_height="31dp"
             app:srcCompat="@drawable/configuration" />
 
@@ -68,7 +69,8 @@
         android:id="@+id/GAMES"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Games"
+        android:text="Videojuegos"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/containerBrainTraining"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

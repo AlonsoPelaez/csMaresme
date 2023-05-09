@@ -77,14 +77,12 @@ public class Games extends AppCompatActivity {
                     case R.id.setting:
                         startActivity(new Intent(getApplicationContext(), Setting.class));
                         overridePendingTransition(0,0);
-
+                        finish();
+                        return true;
                 }
                 return false;
             }
         });
-
-
-
     }
 
     @Override
