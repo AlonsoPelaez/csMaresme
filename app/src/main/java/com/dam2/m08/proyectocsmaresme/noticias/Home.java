@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -30,22 +31,35 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Home extends AppCompatActivity {
 
+    private Context context;
     private final String TAG = "PROYECTO_CS_MARESME___HOME";
     private List<Noticia> noticiaList;
     private RecyclerView recyclerView;
     private FloatingActionButton floatingActionButton;
     private String rol;
+    private String languageToLoad;
+    private static Locale defaultLocale;
+    private String totranslate;
+    private static String TARGET_LANGUAGE;
+
+
     @SuppressLint("MissingInflatedId")
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+        obtenerIdioma();
         mostrarDatos();
+
+
         getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azuloscurointerfaz));
         noticiaList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
@@ -118,6 +132,7 @@ public class Home extends AppCompatActivity {
         });
     }
 
+
     public void mostrarDatos() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Noticias")
@@ -130,6 +145,11 @@ public class Home extends AppCompatActivity {
                                 Log.d(TAG, documentSnapshot.getId() + " => " + documentSnapshot.getData().get("Titulo"));
                                 Noticia noticia = new Noticia();
                                 noticia.setTitulo(documentSnapshot.getData().get("Titulo").toString());
+                                totranslate = noticia.getTitulo();
+                                traducir(totranslate);
+//                                Toast.makeText(context, totranslate, Toast.LENGTH_SHORT).show();
+//                                noticia.setTitulo(totranslate);
+
                                 noticia.setCuerpo(documentSnapshot.getData().get("Cuerpo").toString());
                                 noticia.setImagen(documentSnapshot.getData().get("Imagen").toString());
                                 noticia.setId(documentSnapshot.getId());
@@ -140,6 +160,45 @@ public class Home extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public void obtenerIdioma(){
+
+        if (defaultLocale == null) defaultLocale = Locale.getDefault(); //backup default locale
+        languageToLoad = Locale.getDefault().getDisplayLanguage();
+        if (languageToLoad.equals("default")) languageToLoad = defaultLocale.getLanguage();
+        Log.d("UsefulFunctions", "setLocale():" + languageToLoad);
+
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+
+    }
+    public void traducir(String totranslate){
+        String currentIdioma = languageToLoad;
+//
+//        if (currentIdioma == "english"){
+//            EnglishTranslator translator = new EnglishTranslator();
+//            String text = totranslate;
+//            String englishText = translator.translateToEnglish(text);
+//            System.out.println(englishText);
+//
+//        }
+//        if (currentIdioma == "català"){
+//            CatalanTranslator translator = new CatalanTranslator();
+//            String text = totranslate;
+//            String catalanText = translator.translateToCatalan(text);
+//            System.out.println(catalanText);
+//
+//        }
+//        if (currentIdioma == "español"){
+//            SpanishTranslator translator = new SpanishTranslator();
+//            String text = totranslate;
+//            String spanishText = translator.translateToSpanish(text);
+//            System.out.println(spanishText);
+//
+//        }
     }
 
 

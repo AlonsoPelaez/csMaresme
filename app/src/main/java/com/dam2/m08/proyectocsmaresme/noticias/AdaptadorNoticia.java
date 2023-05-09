@@ -31,12 +31,13 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.MyVi
     private List<Noticia> noticiaList;
     private LayoutInflater layoutInflater;
     private String rol;
+    private String languageToLoad;
     private static Locale defaultLocale;
     public AdaptadorNoticia(Context context, List<Noticia> noticiaList, String rol) {
         this.context = context;
         this.noticiaList = noticiaList;
         this.rol = rol;
-        obtenerIdioma();
+
     }
 
     @NonNull
@@ -97,20 +98,6 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.MyVi
 
 
         holder.menu.setImageDrawable((layoutInflater.getContext().getDrawable(R.drawable.menu_comentario_chatanonimo_2)));
-    }
-    public void obtenerIdioma(){
-
-        if (defaultLocale == null) defaultLocale = Locale.getDefault(); //backup default locale
-        String languageToLoad = Locale.getDefault().getDisplayLanguage();
-        if (languageToLoad.equals("default")) languageToLoad = defaultLocale.getLanguage();
-        Log.d("UsefulFunctions", "setLocale():" + languageToLoad);
-
-        Locale locale = new Locale(languageToLoad);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        Toast.makeText(context.getApplicationContext(), languageToLoad, Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
