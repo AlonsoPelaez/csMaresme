@@ -147,6 +147,7 @@ public class Home extends AppCompatActivity {
         AdaptadorNoticia adaptery = new AdaptadorNoticia(this, noticiaList, rol);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptery);
+
     }
 
     @Override

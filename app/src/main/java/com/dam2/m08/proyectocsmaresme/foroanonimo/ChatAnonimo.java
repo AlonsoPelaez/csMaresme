@@ -129,7 +129,9 @@ public class ChatAnonimo extends AppCompatActivity {
                         return true;
                     case R.id.setting:
                         startActivity(new Intent(getApplicationContext(), Setting.class));
+                        finish();
                         overridePendingTransition(0, 0);
+                        return true;
                 }
                 return false;
             }

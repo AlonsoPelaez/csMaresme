@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.dam2.m08.proyectocsmaresme.R;
 
@@ -69,18 +70,27 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i("lifecycle", "onCreate");
-
+        getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azuloscurointerfaz));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         Intent intent = getIntent();
         String eleccion = intent.getStringExtra("election");
 
         if (Objects.equals(eleccion, "history")){
-            questions = getResources().getStringArray(R.array.questions_history);
+            questions = new String[]{"¿En que fecha se lanzo el primer IPhone?;29 de Julio de 2007;*29 de Junio de 2007;25 de Noviembre de 2008; Ninguna de las anteriores",
+                    "¿Dónde y cuándo se inventó la pólvora?;En Estados Unidos en el siglo XIX;*En China en el siglo IX;En Francia en el siglo XVII;Ninguna de las anteriores",
+                    "¿Cuánto tiempo duró la Guerra Fría entre Estados Unidos y la Unión Soviética?;100 años, ente 1899 y 1999;*45 años, entre 1946 y 1991;15 años, entre 1929 y 1944;Ninguna de las anteriores"};
         } else if (Objects.equals(eleccion, "science")){
-            questions = getResources().getStringArray(R.array.questions_science);
+            questions = new String[]{"¿Cual es el compuesto quimico del agua?;*H²O;HO²;HO;Ninguna de las anteriores;Ninguna de las anteriores",
+                    "¿De qué color es la sangre de los peces?;Marrón oscuro;*Rojo;Azul;Ninguna de las anteriores",
+                    "¿De donde de saca la sacarina?;Del azúcar;*Del carbón;Del aceite de girasol;Ninguna de las anteriores"
+            };
         } else if (Objects.equals(eleccion, "art")){
-            questions = getResources().getStringArray(R.array.questions_art);
+            questions = new String[]{
+                    "¿En que año nacio Leonardo da Vinci?;*15 de Abril de 1452;15 de Junio de 1454;23 de Agosto de 1912;Ninguna de las anteriores;Ninguna de las anteriores",
+                    "¿Qué describe una prosopografía?;*El físico de una persona;El fisico y el carácter de una persona;El carácter de una persona;Ninguna de las anteriores",
+                    "¿Quién pintó La Capilla Sixtina?;Giorgio Vasari;Leonardo Da Vinci;*Miguel Ángel;Ninguna de las anteriores"
+            };
         }
 
         text_question = (TextView) findViewById(R.id.text_question);
@@ -143,7 +153,6 @@ public class QuizActivity extends AppCompatActivity {
             else incorrectas++;
         }
 
-        // TODO: Permitir traducción de este texto:
         String message =
                 String.format("Correctas: %d\nIncorrectas: %d\nNo contestadas: %d\n",
                         correctas, incorrectas, nocontestadas);

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.dam2.m08.proyectocsmaresme.R;
 import com.dam2.m08.proyectocsmaresme.juegos.Games;
@@ -29,7 +30,7 @@ public class OptionQuiz extends AppCompatActivity {
         scienceButton = findViewById(R.id.sciencieButton);
         artButton = findViewById(R.id.artButton);
         volverButton = findViewById(R.id.volverOptionQuiz);
-
+        getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azuloscurointerfaz));
         historyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

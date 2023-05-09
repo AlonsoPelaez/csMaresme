@@ -1,8 +1,10 @@
 package com.dam2.m08.proyectocsmaresme.noticias;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -51,7 +53,7 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.MyVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Noticia noticia = noticiaList.get(position);
 
         holder.titulo.setText(noticiaList.get(position).getTitulo());
@@ -83,6 +85,8 @@ public class AdaptadorNoticia extends RecyclerView.Adapter<AdaptadorNoticia.MyVi
                                             @Override
                                             public void onSuccess(Void unused) {
                                                 Toast.makeText(view.getContext(), "Correctamente eliminado", Toast.LENGTH_SHORT).show();
+                                                noticiaList.remove(position);
+                                                notifyItemRemoved(position);
                                             }
                                         });
                                 return true;
