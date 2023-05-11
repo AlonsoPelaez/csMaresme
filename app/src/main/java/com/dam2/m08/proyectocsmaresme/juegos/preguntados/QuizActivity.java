@@ -15,6 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.dam2.m08.proyectocsmaresme.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
 
@@ -33,6 +36,7 @@ public class QuizActivity extends AppCompatActivity {
     private TextView text_question;
     private RadioGroup group;
     private Button btn_next, btn_prev;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private int correct_answer;
     private int current_question;
@@ -77,6 +81,17 @@ public class QuizActivity extends AppCompatActivity {
         String eleccion = intent.getStringExtra("election");
 
         if (Objects.equals(eleccion, "history")){
+
+            db.collection("Preguntados")
+                    .document("history")
+                    .get()
+                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            System.out.println(documentSnapshot.getData());
+                        }
+                    });
+
             questions = new String[]{"¿En que fecha se lanzo el primer IPhone?;29 de Julio de 2007;*29 de Junio de 2007;25 de Noviembre de 2008; Ninguna de las anteriores",
                     "¿Dónde y cuándo se inventó la pólvora?;En Estados Unidos en el siglo XIX;*En China en el siglo IX;En Francia en el siglo XVII;Ninguna de las anteriores",
                     "¿Cuánto tiempo duró la Guerra Fría entre Estados Unidos y la Unión Soviética?;100 años, ente 1899 y 1999;*45 años, entre 1946 y 1991;15 años, entre 1929 y 1944;Ninguna de las anteriores"};
