@@ -16,6 +16,7 @@ import com.dam2.m08.proyectocsmaresme.foroanonimo.ChatAnonimo;
 import com.dam2.m08.proyectocsmaresme.R;
 import com.dam2.m08.proyectocsmaresme.juegos.minesweeper.MineSweeperActivity;
 import com.dam2.m08.proyectocsmaresme.juegos.preguntados.OptionQuiz;
+import com.dam2.m08.proyectocsmaresme.juegos.snake.SnakeGame;
 import com.dam2.m08.proyectocsmaresme.settings.Setting;
 import com.dam2.m08.proyectocsmaresme.noticias.Home;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,6 +24,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class Games extends AppCompatActivity {
     private LinearLayout brainGameButton;
     private LinearLayout mineGameButton;
+    private LinearLayout snakeButton;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +50,13 @@ public class Games extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), MineSweeperActivity.class));
 
+            }
+        });
+        snakeButton = findViewById(R.id.containerSnake);
+        snakeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SnakeGame.class));
             }
         });
         // Set Home selected

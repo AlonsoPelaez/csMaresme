@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".juegos.snake.SnakeGame">
     <RelativeLayout
+        android:layout_above="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -28,7 +29,7 @@
 
     </RelativeLayout>
     <LinearLayout
-        android:id="@+id/botons"
+        android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -37,13 +38,42 @@
         android:paddingTop="10dp"
         android:background="@color/black"
         android:layout_alignParentBottom="true">
-        
+
         <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnTop"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="#396fb4"
+            android:src="@drawable/arrow_top"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnLeft"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:background="#396fb4"
+                android:src="@drawable/arrow_left"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnRight"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="80dp"
+                android:background="#396fb4"
+                android:src="@drawable/arrow_right"/>
+
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnBottom"
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:background="#396fb4"
             android:src="@drawable/arrow_bottom"/>
-        
+
     </LinearLayout>
 
 

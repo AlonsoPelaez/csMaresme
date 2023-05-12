@@ -102,6 +102,7 @@ public class FormularioComentario extends AppCompatActivity {
             titulo.setText(comentario.getTitulo());
             contenido.setText(comentario.getContenido());
             idCategoria= comentario.getCategoria();
+            Log.d(TAG, "spinner selection :"+ comentario.getCategoria());
         }
 
         btn_aceptar.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +110,7 @@ public class FormularioComentario extends AppCompatActivity {
             public void onClick(View v) {
                 if (!titulo.getText().equals("") || !contenido.getText().equals("")){
                     SharedPreferences prefer= getSharedPreferences(getString(R.string.prefer_file), Context.MODE_PRIVATE);
-                    
+
 //                    filtraPalabrasNegativas(titulo + " "+ contenido);
                     String time = new SimpleDateFormat("HH:mm dd/MM/yyyy").format(new Date());
                     HashMap map = new HashMap();

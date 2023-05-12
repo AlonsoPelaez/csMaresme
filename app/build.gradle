@@ -50,6 +50,10 @@ dependencies {
     implementation('com.google.firebase:firebase-firestore:24.4.3')
     implementation('com.google.firebase:firebase-storage:20.1.0')
 
+//    implementation 'com.theokanning.openai-gpt3-java:service:0.8.1'
+    implementation 'com.theokanning.openai-gpt3-java:client:0.8.1'
+    implementation 'com.theokanning.openai-gpt3-java:api:0.8.1'
+
     //noinspection GradleCompatible
     implementation 'com.android.support:cardview-v7:28.0.0'
     //noinspection GradleCompatible
