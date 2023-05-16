@@ -1,30 +1,25 @@
 package com.dam2.m08.proyectocsmaresme;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dam2.m08.proyectocsmaresme.R;
-import com.dam2.m08.proyectocsmaresme.juegos.Games;
-import com.dam2.m08.proyectocsmaresme.juegos.snake.SnakeGame;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.sql.Time;
-import java.util.Timer;
-import java.util.TimerTask;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class RecuperarContraseña extends AppCompatActivity {
     private EditText edtx_email;
@@ -32,6 +27,7 @@ public class RecuperarContraseña extends AppCompatActivity {
     private Button btnBackToLogin;
     private FirebaseAuth mAuth;
     private String email="";
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,9 +44,19 @@ public class RecuperarContraseña extends AppCompatActivity {
             public void onClick(View v) {
                 email = edtx_email.getText().toString();
                 if (!email.isEmpty()){
-                    resetPassword();
+                    db.collection("Usuarios").document(email).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            resetPassword();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            showMessage("El email brindado NO existe", "Email invalido");
+                        }
+                    });
                 }else{
-                    showMessage("No ha sido posible el envio de del mensaje. VERIFIQUE SU CORREO!","Email no Enviado");
+                    showMessage("El campo Email no puede estar vacio","Email no Enviado");
                 }
             }
         });
@@ -63,7 +69,7 @@ public class RecuperarContraseña extends AppCompatActivity {
         });
     }
     private void showMessage(String message, String title){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message);
         builder.setTitle(title);
         builder.setCancelable(false);
@@ -73,6 +79,7 @@ public class RecuperarContraseña extends AppCompatActivity {
 
             }
         });
+        builder.create().show();
     }
 
 
@@ -83,8 +90,9 @@ public class RecuperarContraseña extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
                     showMessage("El correo ha sido enviado correctamente!","Correo Enviado");
+                    edtx_email.setText("");
                 }else{
-                    showMessage("No ha sido posible enviar el correo","Ha Ocurrido un error");
+                    showMessage("No ha sido posible enviar el correo","Email inexistente");
                 }
             }
         });
