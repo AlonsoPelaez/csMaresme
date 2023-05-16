@@ -50,7 +50,6 @@ public class ChatAnonimo extends AppCompatActivity {
         setContentView(R.layout.chatanonimo);
         getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.azuloscurointerfaz));
 
-        Toast.makeText(this, "CHAT", Toast.LENGTH_SHORT).show();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
