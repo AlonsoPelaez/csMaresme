@@ -78,25 +78,31 @@
 
     <LinearLayout
         android:id="@+id/containerSnake"
-        android:layout_width="408dp"
-        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:background="#4E468E"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/navView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/containerMinesweeper"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.81">
 
         <ImageView
             android:id="@+id/iconSnake"
-            android:layout_width="31dp"
-            android:layout_height="31dp" />
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/snaklogogame" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="31dp"
-            android:text="Snake lol"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="50dp"
+            android:text="Snake Game"
+            android:textAlignment="center"
             android:textSize="20sp" />
     </LinearLayout>
 

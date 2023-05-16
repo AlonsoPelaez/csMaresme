@@ -1,6 +1,7 @@
 package com.dam2.m08.proyectocsmaresme.juegos.snake;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -19,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.dam2.m08.proyectocsmaresme.R;
+import com.dam2.m08.proyectocsmaresme.juegos.Games;
 
 import java.io.Console;
 import java.sql.Time;
@@ -201,13 +203,20 @@ public class SnakeGame extends AppCompatActivity implements SurfaceHolder.Callba
                     timer.cancel();
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(SnakeGame.this);
-                    builder.setMessage("Your Score" + score);
+                    builder.setMessage("Your Score: " + score);
                     builder.setTitle("GAME OVER");
                     builder.setCancelable(false);
                     builder.setPositiveButton("Start Again", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             init();
+                        }
+                    });
+                    builder.setNegativeButton("Back", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent i = new Intent(getApplicationContext(), Games.class);
+                            startActivity(i);
                         }
                     });
                     runOnUiThread(new Runnable() {
