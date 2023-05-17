@@ -52,34 +52,33 @@ public class AdaptadorComentarioAnonimo extends RecyclerView.Adapter<AdaptadorCo
     @Override
     public void onBindViewHolder(@NonNull AdaptadorComentarioAnonimoHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.imprimir(position);
-
-        holder.btn_menu_comentario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                PopupMenu popupMenu = new PopupMenu(layoutInflater.getContext(), holder.btn_menu_comentario);
-                popupMenu.getMenuInflater().inflate(R.menu.menu_comentario, popupMenu.getMenu());
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()){
-                            case R.id.btn_editar_comentario:
-                                editaComentario(v,position);
-                                return true;
-                            case R.id.btn_eliminar_comentario:
-                                eliminaComentario(position);
-                                return true;
-                            default:
-                                return false;
-                        }
-                    }
-                });
-                popupMenu.show();
-            }
-        });
-
-        holder.btn_menu_comentario.setImageDrawable(layoutInflater.getContext().getDrawable(R.drawable.menu_comentario_chatanonimo_2));
         holder.imageUser.setImageDrawable(layoutInflater.getContext().getDrawable(R.drawable.logo_app_consorcimaresme));
+//        holder.btn_menu_comentario.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+
+//                PopupMenu popupMenu = new PopupMenu(layoutInflater.getContext(), holder.btn_menu_comentario);
+//                popupMenu.getMenuInflater().inflate(R.menu.menu_comentario, popupMenu.getMenu());
+//                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+//                    @Override
+//                    public boolean onMenuItemClick(MenuItem item) {
+//                        switch (item.getItemId()){
+//                            case R.id.btn_editar_comentario:
+//                                editaComentario(v,position);
+//                                return true;
+//                            case R.id.btn_eliminar_comentario:
+//                                eliminaComentario(position);
+//                                return true;
+//                            default:
+//                                return false;
+//                        }
+//                    }
+//                });
+//                popupMenu.show();
+//            }
+//        });
+
+//        holder.btn_menu_comentario.setImageDrawable(layoutInflater.getContext().getDrawable(R.drawable.menu_comentario_chatanonimo_2));
     }
 
     private void editaComentario(View v, int position) {
